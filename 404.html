@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <title>NearMate Plan</title>
+
   <meta
     name="description"
-    content="View a plan shared with you through NearMate.">
+    content="View a plan shared through NearMate. Discover people around you, join activities and make new connections.">
+
+  <meta name="theme-color" content="#ec4899">
 
   <meta
     http-equiv="Content-Security-Policy"
@@ -19,212 +24,453 @@
       script-src 'self' 'unsafe-inline';
       base-uri 'self';
       form-action 'self';
+      object-src 'none';
+      frame-ancestors 'none';
+      upgrade-insecure-requests;
     ">
 
   <style>
     :root {
-      --purple: #7657ff;
-      --blue: #16a5f7;
-      --text: #17171c;
-      --muted: #696975;
-      --border: #e8e6f0;
+      --pink: #ec4899;
+      --pink-dark: #db2777;
+      --pink-soft: #fce7f3;
+
+      --purple: #8b5cf6;
+      --purple-dark: #7c3aed;
+      --purple-soft: #f3e8ff;
+
+      --text-primary: #201525;
+      --text-secondary: #746778;
+      --text-light: #9c8fa0;
+
       --surface: #ffffff;
-      --background: #f6f4fb;
-      --success: #1d9b63;
-      --danger: #c73a4a;
+      --surface-soft: #fff8fc;
+      --background: #fff7fb;
+
+      --border: #f0dce8;
+      --success: #15966f;
+      --success-soft: #e7f8f2;
+      --danger: #d3485b;
+      --danger-soft: #fff0f3;
+
+      --shadow:
+        0 24px 70px rgba(92, 35, 75, 0.14);
+
+      --gradient:
+        linear-gradient(
+          135deg,
+          var(--pink) 0%,
+          var(--pink-dark) 42%,
+          var(--purple) 100%
+        );
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      min-width: 320px;
+      background: var(--background);
+    }
+
     body {
       margin: 0;
+      min-width: 320px;
       min-height: 100vh;
-      padding: 24px 16px;
+      padding:
+        max(20px, env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-right))
+        max(24px, env(safe-area-inset-bottom))
+        max(16px, env(safe-area-inset-left));
+
       display: flex;
       align-items: center;
       justify-content: center;
+
+      overflow-x: hidden;
+
       font-family:
         Inter,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
         sans-serif;
-      color: var(--text);
+
+      color: var(--text-primary);
+
       background:
-        radial-gradient(circle at top left, #eee8ff 0, transparent 35%),
-        radial-gradient(circle at bottom right, #e2f6ff 0, transparent 38%),
+        radial-gradient(
+          circle at 5% 0%,
+          rgba(236, 72, 153, 0.17),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 100% 10%,
+          rgba(139, 92, 246, 0.16),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 50% 100%,
+          rgba(236, 72, 153, 0.10),
+          transparent 36%
+        ),
         var(--background);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
     .page {
       width: 100%;
-      max-width: 460px;
+      max-width: 480px;
     }
 
-    .brand {
-      margin-bottom: 18px;
+    .brand-header {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo-container {
+      width: 86px;
+      height: 86px;
+      margin-bottom: 12px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 11px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(236, 72, 153, 0.18);
+      border-radius: 24px;
+
+      background: var(--surface);
+      box-shadow:
+        0 14px 35px rgba(172, 47, 123, 0.20);
     }
 
-    .brand-logo {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 15px;
-      color: white;
-      font-size: 24px;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--purple), var(--blue));
-      box-shadow: 0 10px 24px rgba(104, 86, 255, 0.25);
+    .official-logo {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
     }
 
-    .brand-name {
-      font-size: 24px;
-      font-weight: 800;
+    .brand-text-fallback {
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+
+      color: var(--pink-dark);
+      font-size: 18px;
+      font-weight: 900;
       letter-spacing: -0.5px;
     }
 
-    .card {
+    .brand-name {
+      margin: 0;
+
+      font-size: 30px;
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -1px;
+
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .brand-tagline {
+      margin: 7px 0 0;
+
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    .main-card {
       overflow: hidden;
-      background: var(--surface);
-      border: 1px solid rgba(228, 225, 238, 0.9);
-      border-radius: 28px;
-      box-shadow: 0 22px 60px rgba(50, 39, 90, 0.12);
+
+      border: 1px solid rgba(240, 220, 232, 0.95);
+      border-radius: 30px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.98),
+          rgba(255, 250, 253, 0.98)
+        );
+
+      box-shadow: var(--shadow);
     }
 
-    .card-accent {
-      height: 7px;
-      background: linear-gradient(90deg, var(--purple), var(--blue));
+    .top-accent {
+      height: 8px;
+      background: var(--gradient);
     }
 
-    .content {
-      padding: 26px 23px 24px;
+    .card-content {
+      padding: 27px 23px 25px;
     }
 
-    .eyebrow {
+    .invitation-label {
       margin: 0 0 8px;
-      color: var(--purple);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.7px;
+
+      color: var(--pink-dark);
+      font-size: 12px;
+      line-height: 1.3;
+      font-weight: 900;
+      letter-spacing: 1.1px;
       text-transform: uppercase;
     }
 
-    h1 {
+    .hero-title {
       margin: 0;
-      font-size: 27px;
-      line-height: 1.2;
-      letter-spacing: -0.6px;
+
+      color: var(--text-primary);
+      font-size: 28px;
+      line-height: 1.18;
+      font-weight: 900;
+      letter-spacing: -0.8px;
     }
 
-    .intro {
-      margin: 10px 0 22px;
-      color: var(--muted);
+    .hero-description {
+      margin: 11px 0 22px;
+
+      color: var(--text-secondary);
       font-size: 15px;
-      line-height: 1.55;
+      line-height: 1.58;
     }
 
-    .status {
+    .status-badge {
+      width: fit-content;
+      min-height: 29px;
+      margin-bottom: 13px;
+      padding: 6px 12px;
+
       display: inline-flex;
       align-items: center;
-      min-height: 28px;
-      margin-bottom: 15px;
-      padding: 5px 11px;
+      justify-content: center;
+
       border-radius: 999px;
+
       color: var(--success);
-      background: #eaf8f2;
+      background: var(--success-soft);
+
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 900;
+    }
+
+    .status-badge.live {
+      color: #c02663;
+      background: var(--pink-soft);
+    }
+
+    .status-badge.ended {
+      color: var(--text-secondary);
+      background: #f4edf2;
+    }
+
+    .plan-card {
+      padding: 19px;
+
+      border: 1px solid var(--border);
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(252, 231, 243, 0.58),
+          rgba(243, 232, 255, 0.46),
+          rgba(255, 255, 255, 0.96)
+        );
+    }
+
+    .plan-heading-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+    }
+
+    .activity-symbol {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 16px;
+
+      color: white;
+      background: var(--gradient);
+
+      font-size: 23px;
+      font-weight: 900;
+
+      box-shadow:
+        0 10px 24px rgba(210, 51, 132, 0.23);
     }
 
     .plan-title {
-      margin: 0 0 17px;
-      font-size: 24px;
+      margin: 1px 0 0;
+
+      color: var(--text-primary);
+      font-size: 23px;
       line-height: 1.25;
-      letter-spacing: -0.4px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+
+      overflow-wrap: anywhere;
     }
 
-    .details {
+    .plan-category {
+      margin: 6px 0 0;
+
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .details-list {
+      margin-top: 18px;
       display: grid;
-      gap: 12px;
+      gap: 11px;
     }
 
-    .detail {
+    .detail-row {
+      min-width: 0;
       padding: 13px 14px;
+
       display: flex;
       align-items: flex-start;
       gap: 12px;
-      border: 1px solid var(--border);
+
+      border: 1px solid rgba(235, 215, 228, 0.86);
       border-radius: 15px;
-      background: #fbfaff;
+
+      background: rgba(255, 255, 255, 0.80);
     }
 
     .detail-icon {
       width: 34px;
       height: 34px;
       flex: 0 0 34px;
+
       display: grid;
       place-items: center;
+
       border-radius: 11px;
-      color: var(--purple);
-      background: #eeeaff;
+
+      color: var(--pink-dark);
+      background: var(--pink-soft);
+
       font-size: 17px;
     }
 
+    .detail-content {
+      min-width: 0;
+    }
+
     .detail-label {
-      margin: 0 0 2px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
+      margin: 0 0 3px;
+
+      color: var(--text-light);
+      font-size: 11px;
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
     }
 
     .detail-value {
       margin: 0;
-      font-size: 15px;
-      line-height: 1.4;
-      font-weight: 700;
+
+      color: var(--text-primary);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 800;
+
+      overflow-wrap: anywhere;
     }
 
-    .host {
+    .host-section {
       margin-top: 17px;
       padding-top: 17px;
+
       display: flex;
       align-items: center;
       gap: 12px;
-      border-top: 1px solid var(--border);
+
+      border-top: 1px solid rgba(235, 215, 228, 0.92);
     }
 
     .host-avatar {
-      width: 46px;
-      height: 46px;
-      flex: 0 0 46px;
+      width: 50px;
+      height: 50px;
+      flex: 0 0 50px;
+
       display: grid;
       place-items: center;
-      object-fit: cover;
+
+      border: 2px solid rgba(255, 255, 255, 0.94);
       border-radius: 50%;
+
+      object-fit: cover;
+
       color: white;
-      background: linear-gradient(135deg, var(--purple), var(--blue));
-      font-size: 17px;
-      font-weight: 800;
+      background: var(--gradient);
+
+      font-size: 18px;
+      font-weight: 900;
+
+      box-shadow:
+        0 8px 20px rgba(153, 51, 126, 0.18);
+    }
+
+    .host-copy {
+      min-width: 0;
     }
 
     .host-label {
-      margin: 0 0 2px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
+      margin: 0 0 3px;
+
+      color: var(--text-light);
+      font-size: 11px;
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
     }
 
     .host-name {
       margin: 0;
+
+      color: var(--text-primary);
       font-size: 15px;
-      font-weight: 800;
+      line-height: 1.4;
+      font-weight: 900;
+
+      overflow-wrap: anywhere;
     }
 
     .actions {
@@ -234,73 +480,175 @@
     }
 
     .button {
-      min-height: 52px;
-      padding: 13px 18px;
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 20px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 0;
+      gap: 9px;
+
       border-radius: 999px;
+
+      text-align: center;
       text-decoration: none;
+
       font-size: 16px;
-      font-weight: 800;
+      line-height: 1.2;
+      font-weight: 900;
+
+      cursor: pointer;
+
       transition:
-        transform 0.15s ease,
-        opacity 0.15s ease;
+        transform 150ms ease,
+        box-shadow 150ms ease,
+        opacity 150ms ease,
+        background 150ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
     }
 
     .button:active {
-      transform: scale(0.98);
+      transform: scale(0.985);
     }
 
     .button:focus-visible {
-      outline: 3px solid rgba(118, 87, 255, 0.28);
+      outline: 3px solid rgba(236, 72, 153, 0.30);
       outline-offset: 3px;
     }
 
     .button-primary {
+      border: 0;
       color: white;
-      background: linear-gradient(90deg, var(--purple), var(--blue));
-      box-shadow: 0 12px 26px rgba(104, 86, 255, 0.24);
+      background: var(--gradient);
+
+      box-shadow:
+        0 14px 28px rgba(207, 48, 131, 0.24);
     }
 
     .button-secondary {
-      color: var(--purple);
-      background: #f0edff;
+      border: 2px solid rgba(219, 39, 119, 0.28);
+
+      color: var(--pink-dark);
+      background: rgba(255, 255, 255, 0.86);
     }
 
-    .trust {
-      margin: 17px 0 0;
-      color: var(--muted);
+    .button-secondary:hover {
+      background: var(--pink-soft);
+    }
+
+    .trust-message {
+      margin: 17px 2px 0;
+
+      color: var(--text-secondary);
       text-align: center;
-      font-size: 13px;
-      line-height: 1.5;
+      font-size: 12px;
+      line-height: 1.55;
     }
 
-    .loading {
+    .marketing-section {
+      margin-top: 21px;
+      padding-top: 20px;
+
+      border-top: 1px solid var(--border);
+    }
+
+    .marketing-title {
+      margin: 0 0 13px;
+
+      color: var(--text-primary);
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.4;
+      font-weight: 900;
+    }
+
+    .benefits {
       display: grid;
-      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .benefit {
+      min-width: 0;
+      padding: 12px 7px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+
+      border: 1px solid var(--border);
+      border-radius: 14px;
+
+      background: rgba(255, 255, 255, 0.76);
+
+      text-align: center;
+    }
+
+    .benefit-icon {
+      font-size: 20px;
+    }
+
+    .benefit-text {
+      color: var(--text-secondary);
+      font-size: 11px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .loading-wrapper {
+      display: grid;
+      gap: 13px;
     }
 
     .skeleton {
-      height: 48px;
-      overflow: hidden;
       position: relative;
-      border-radius: 14px;
-      background: #eeecf3;
+      overflow: hidden;
+
+      border-radius: 15px;
+      background: #f2e8ef;
+    }
+
+    .skeleton.title {
+      width: 78%;
+      height: 31px;
+    }
+
+    .skeleton.subtitle {
+      width: 100%;
+      height: 18px;
+    }
+
+    .skeleton.card {
+      width: 100%;
+      height: 170px;
+    }
+
+    .skeleton.button {
+      width: 100%;
+      height: 54px;
+      border-radius: 999px;
     }
 
     .skeleton::after {
       content: "";
       position: absolute;
       inset: 0;
+
       transform: translateX(-100%);
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.75),
-        transparent
-      );
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.78),
+          transparent
+        );
+
       animation: shimmer 1.25s infinite;
     }
 
@@ -310,31 +658,43 @@
       }
     }
 
-    .state {
-      padding: 18px 0 4px;
+    .state-container {
+      padding: 10px 0 2px;
       text-align: center;
     }
 
     .state-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 15px;
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 17px;
+
       display: grid;
       place-items: center;
-      border-radius: 20px;
+
+      border-radius: 22px;
+
       color: var(--danger);
-      background: #fff0f2;
-      font-size: 28px;
+      background: var(--danger-soft);
+
+      font-size: 25px;
+      font-weight: 900;
     }
 
-    .state h2 {
-      margin: 0 0 8px;
-      font-size: 23px;
+    .state-title {
+      margin: 0 0 9px;
+
+      color: var(--text-primary);
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: -0.5px;
     }
 
-    .state p {
+    .state-message {
       margin: 0;
-      color: var(--muted);
+
+      color: var(--text-secondary);
+      font-size: 15px;
       line-height: 1.55;
     }
 
@@ -342,21 +702,83 @@
       display: none !important;
     }
 
-    @media (max-width: 360px) {
+    .fade-in {
+      animation: fadeIn 300ms ease both;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 390px) {
       body {
-        padding: 15px 10px;
+        align-items: flex-start;
+        padding-left: 10px;
+        padding-right: 10px;
       }
 
-      .content {
-        padding: 22px 17px 20px;
+      .logo-container {
+        width: 76px;
+        height: 76px;
+        border-radius: 21px;
       }
 
-      h1 {
+      .brand-name {
+        font-size: 27px;
+      }
+
+      .card-content {
+        padding: 23px 17px 21px;
+      }
+
+      .hero-title {
         font-size: 24px;
       }
 
+      .plan-card {
+        padding: 15px;
+      }
+
       .plan-title {
-        font-size: 21px;
+        font-size: 20px;
+      }
+
+      .benefit {
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+
+      .benefit-text {
+        font-size: 10px;
+      }
+    }
+
+    @media (min-width: 700px) {
+      .page {
+        max-width: 510px;
+      }
+
+      .card-content {
+        padding: 31px 29px 29px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -364,80 +786,148 @@
 
 <body>
   <main class="page">
-    <div class="brand" aria-label="NearMate">
-      <div class="brand-logo" aria-hidden="true">N</div>
-      <div class="brand-name">NearMate</div>
-    </div>
+    <header class="brand-header">
+      <div class="logo-container">
+        <!--
+          Replace /assets/nearmate-logo.png only when your official logo
+          uses a different path in the GitHub Pages repository.
+        -->
+        <img
+          id="officialLogo"
+          class="official-logo"
+          src="/assets/nearmate-logo.png"
+          alt="NearMate official logo">
 
-    <section class="card">
-      <div class="card-accent"></div>
-
-      <div class="content">
-        <div id="loadingState" aria-live="polite">
-          <p class="eyebrow">Shared plan</p>
-          <h1>Loading plan details…</h1>
-
-          <div class="loading" style="margin-top: 22px;">
-            <div class="skeleton"></div>
-            <div class="skeleton"></div>
-            <div class="skeleton"></div>
-          </div>
+        <div
+          id="brandTextFallback"
+          class="brand-text-fallback"
+          aria-label="NearMate">
+          NearMate
         </div>
+      </div>
 
-        <div id="planState" class="hidden">
-          <p class="eyebrow">You’re invited</p>
-          <h1>Someone shared a NearMate plan with you</h1>
+      <h1 class="brand-name">NearMate</h1>
 
-          <p class="intro">
-            Discover the plan, meet nearby people and join through NearMate.
+      <p class="brand-tagline">
+        Discover People Around You
+      </p>
+    </header>
+
+    <section class="main-card">
+      <div class="top-accent"></div>
+
+      <div class="card-content">
+
+        <!-- Loading state -->
+        <section
+          id="loadingState"
+          aria-live="polite"
+          aria-busy="true">
+
+          <p class="invitation-label">
+            Shared NearMate plan
           </p>
 
-          <span id="statusBadge" class="status hidden"></span>
-
-          <h2 id="planTitle" class="plan-title"></h2>
-
-          <div class="details">
-            <div id="activityRow" class="detail hidden">
-              <div class="detail-icon" aria-hidden="true">✦</div>
-              <div>
-                <p class="detail-label">Activity</p>
-                <p id="activityValue" class="detail-value"></p>
-              </div>
-            </div>
-
-            <div id="dateRow" class="detail hidden">
-              <div class="detail-icon" aria-hidden="true">◷</div>
-              <div>
-                <p class="detail-label">Date and time</p>
-                <p id="dateValue" class="detail-value"></p>
-              </div>
-            </div>
-
-            <div id="locationRow" class="detail hidden">
-              <div class="detail-icon" aria-hidden="true">⌖</div>
-              <div>
-                <p class="detail-label">Location</p>
-                <p id="locationValue" class="detail-value"></p>
-              </div>
-            </div>
+          <div class="loading-wrapper">
+            <div class="skeleton title"></div>
+            <div class="skeleton subtitle"></div>
+            <div class="skeleton card"></div>
+            <div class="skeleton button"></div>
           </div>
+        </section>
 
-          <div class="host">
-            <div id="hostFallback" class="host-avatar" aria-hidden="true">N</div>
+        <!-- Loaded Plan state -->
+        <section id="planState" class="hidden">
+          <p class="invitation-label">
+            You’re invited
+          </p>
 
-            <img
-              id="hostImage"
-              class="host-avatar hidden"
-              alt="Plan host profile photo">
+          <h2 class="hero-title">
+            Join a plan shared with you on NearMate
+          </h2>
 
-            <div>
-              <p class="host-label">Hosted by</p>
-              <p id="hostName" class="host-name">NearMate member</p>
+          <p class="hero-description">
+            Meet nearby people, explore activities and join the plan through
+            the NearMate app.
+          </p>
+
+          <span
+            id="statusBadge"
+            class="status-badge hidden">
+          </span>
+
+          <article class="plan-card">
+            <div class="plan-heading-row">
+              <div
+                id="activitySymbol"
+                class="activity-symbol"
+                aria-hidden="true">
+                ✦
+              </div>
+
+              <div>
+                <h3 id="planTitle" class="plan-title"></h3>
+                <p id="planCategory" class="plan-category hidden"></p>
+              </div>
             </div>
-          </div>
+
+            <div class="details-list">
+
+              <div id="activityRow" class="detail-row hidden">
+                <div class="detail-icon" aria-hidden="true">★</div>
+
+                <div class="detail-content">
+                  <p class="detail-label">Activity</p>
+                  <p id="activityValue" class="detail-value"></p>
+                </div>
+              </div>
+
+              <div id="dateRow" class="detail-row hidden">
+                <div class="detail-icon" aria-hidden="true">◷</div>
+
+                <div class="detail-content">
+                  <p class="detail-label">Date and time</p>
+                  <p id="dateValue" class="detail-value"></p>
+                </div>
+              </div>
+
+              <div id="locationRow" class="detail-row hidden">
+                <div class="detail-icon" aria-hidden="true">⌖</div>
+
+                <div class="detail-content">
+                  <p class="detail-label">Location</p>
+                  <p id="locationValue" class="detail-value"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="host-section">
+              <div
+                id="hostFallback"
+                class="host-avatar"
+                aria-hidden="true">
+                N
+              </div>
+
+              <img
+                id="hostImage"
+                class="host-avatar hidden"
+                alt="Plan host profile photo">
+
+              <div class="host-copy">
+                <p class="host-label">Hosted by</p>
+                <p id="hostName" class="host-name">
+                  NearMate member
+                </p>
+              </div>
+            </div>
+          </article>
 
           <div class="actions">
-            <a id="openAppButton" class="button button-primary" href="#">
+            <a
+              id="openAppButton"
+              class="button button-primary"
+              href="#">
               Open in NearMate
             </a>
 
@@ -448,16 +938,50 @@
             </a>
           </div>
 
-          <p class="trust">
-            Open NearMate to view full details and join this plan.
+          <p class="trust-message">
+            Open NearMate to view full details, express interest and join this
+            plan safely.
           </p>
-        </div>
 
-        <div id="unavailableState" class="state hidden" aria-live="polite">
+          <section class="marketing-section">
+            <h3 class="marketing-title">
+              Connect, explore and make new memories
+            </h3>
+
+            <div class="benefits">
+              <div class="benefit">
+                <span class="benefit-icon" aria-hidden="true">⌖</span>
+                <span class="benefit-text">Meet nearby people</span>
+              </div>
+
+              <div class="benefit">
+                <span class="benefit-icon" aria-hidden="true">✦</span>
+                <span class="benefit-text">Join activities</span>
+              </div>
+
+              <div class="benefit">
+                <span class="benefit-icon" aria-hidden="true">♥</span>
+                <span class="benefit-text">Make connections</span>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- Unavailable state -->
+        <section
+          id="unavailableState"
+          class="state-container hidden"
+          aria-live="polite">
+
           <div class="state-icon" aria-hidden="true">!</div>
-          <h2>This plan is unavailable</h2>
-          <p>
-            It may have ended, been removed, or is no longer public.
+
+          <h2 class="state-title">
+            This plan is unavailable
+          </h2>
+
+          <p class="state-message">
+            It may have ended, been removed or is no longer available
+            publicly.
           </p>
 
           <div class="actions">
@@ -471,226 +995,482 @@
               Visit NearMate
             </a>
           </div>
-        </div>
+        </section>
 
-        <div id="notFoundState" class="state hidden">
+        <!-- Standard 404 state -->
+        <section
+          id="notFoundState"
+          class="state-container hidden">
+
           <div class="state-icon" aria-hidden="true">404</div>
-          <h2>Page not found</h2>
-          <p>The page you’re looking for doesn’t exist.</p>
+
+          <h2 class="state-title">
+            Page not found
+          </h2>
+
+          <p class="state-message">
+            The page you’re looking for does not exist.
+          </p>
 
           <div class="actions">
             <a class="button button-primary" href="/">
               Go to NearMate
             </a>
           </div>
-        </div>
+        </section>
+
       </div>
     </section>
   </main>
 
   <script>
     (() => {
+      "use strict";
+
       const API_URL =
         "https://us-central1-nearbyfriendsapp-232c5.cloudfunctions.net/publicPlanShare";
 
-      const loadingState = document.getElementById("loadingState");
-      const planState = document.getElementById("planState");
-      const unavailableState = document.getElementById("unavailableState");
-      const notFoundState = document.getElementById("notFoundState");
+      const PLAY_STORE_URL =
+        "https://play.google.com/store/apps/details?id=com.nearmatechat.app";
 
-      const showOnly = (element) => {
-        [loadingState, planState, unavailableState, notFoundState]
-          .forEach((item) => item.classList.add("hidden"));
+      const loadingState =
+        document.getElementById("loadingState");
 
-        element.classList.remove("hidden");
+      const planState =
+        document.getElementById("planState");
+
+      const unavailableState =
+        document.getElementById("unavailableState");
+
+      const notFoundState =
+        document.getElementById("notFoundState");
+
+      const officialLogo =
+        document.getElementById("officialLogo");
+
+      const brandTextFallback =
+        document.getElementById("brandTextFallback");
+
+      const allStates = [
+        loadingState,
+        planState,
+        unavailableState,
+        notFoundState
+      ];
+
+      const showOnly = (target) => {
+        allStates.forEach((state) => {
+          state.classList.add("hidden");
+          state.classList.remove("fade-in");
+        });
+
+        target.classList.remove("hidden");
+
+        window.requestAnimationFrame(() => {
+          target.classList.add("fade-in");
+        });
       };
 
-      const parts = window.location.pathname
+      officialLogo.addEventListener("error", () => {
+        officialLogo.classList.add("hidden");
+        brandTextFallback.style.display = "flex";
+      });
+
+      const pathParts = window.location.pathname
         .split("/")
         .filter(Boolean);
 
-      const validPath =
-        parts.length === 2 &&
-        parts[0] === "plan" &&
-        parts[1].length > 0 &&
-        parts[1].length <= 150 &&
-        !/[\s/\\\u0000-\u001F]/.test(parts[1]);
+      const isValidPlanPath =
+        pathParts.length === 2 &&
+        pathParts[0] === "plan" &&
+        pathParts[1].length > 0 &&
+        pathParts[1].length <= 150 &&
+        !/[\s/\\\u0000-\u001F]/.test(pathParts[1]);
 
-      if (!validPath) {
+      if (!isValidPlanPath) {
         showOnly(notFoundState);
         return;
       }
 
-      const planId = parts[1];
+      const planId = pathParts[1];
       const encodedPlanId = encodeURIComponent(planId);
 
-      const safeText = (value) => {
-        return typeof value === "string" ? value.trim() : "";
+      const cleanText = (value) => {
+        return typeof value === "string"
+          ? value.trim()
+          : "";
       };
 
-      const formatDate = (startValue, endValue) => {
+      const formatDateRange = (startValue, endValue) => {
         const start = new Date(startValue);
 
         if (Number.isNaN(start.getTime())) {
           return "";
         }
 
-        const dateFormatter = new Intl.DateTimeFormat(undefined, {
-          weekday: "long",
-          day: "numeric",
-          month: "long",
-          year: "numeric"
-        });
+        const dateFormatter = new Intl.DateTimeFormat(
+          undefined,
+          {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+          }
+        );
 
-        const timeFormatter = new Intl.DateTimeFormat(undefined, {
-          hour: "numeric",
-          minute: "2-digit"
-        });
+        const shortDateFormatter = new Intl.DateTimeFormat(
+          undefined,
+          {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+          }
+        );
+
+        const timeFormatter = new Intl.DateTimeFormat(
+          undefined,
+          {
+            hour: "numeric",
+            minute: "2-digit"
+          }
+        );
 
         let output =
           `${dateFormatter.format(start)} • ${timeFormatter.format(start)}`;
 
         const end = new Date(endValue);
 
-        if (!Number.isNaN(end.getTime())) {
-          const sameDay =
-            start.getFullYear() === end.getFullYear() &&
-            start.getMonth() === end.getMonth() &&
-            start.getDate() === end.getDate();
+        if (Number.isNaN(end.getTime())) {
+          return output;
+        }
 
-          output += sameDay
-            ? ` – ${timeFormatter.format(end)}`
-            : ` – ${dateFormatter.format(end)} • ${timeFormatter.format(end)}`;
+        const sameDay =
+          start.getFullYear() === end.getFullYear() &&
+          start.getMonth() === end.getMonth() &&
+          start.getDate() === end.getDate();
+
+        if (sameDay) {
+          output += ` – ${timeFormatter.format(end)}`;
+        } else {
+          output +=
+            ` – ${shortDateFormatter.format(end)} • ` +
+            `${timeFormatter.format(end)}`;
         }
 
         return output;
       };
 
-      const mapStatus = (value) => {
-        const statuses = {
-          FUTURE: "Upcoming",
-          LIVE: "Live now",
-          EXPIRED: "Ended"
-        };
+      const getStatusPresentation = (statusValue) => {
+        switch (statusValue) {
+          case "FUTURE":
+            return {
+              label: "Upcoming",
+              className: ""
+            };
 
-        return statuses[value] || "";
+          case "LIVE":
+            return {
+              label: "Live now",
+              className: "live"
+            };
+
+          case "EXPIRED":
+            return {
+              label: "Ended",
+              className: "ended"
+            };
+
+          default:
+            return null;
+        }
+      };
+
+      const getActivitySymbol = (activity, category) => {
+        const text =
+          `${activity} ${category}`.toLowerCase();
+
+        if (
+          text.includes("cricket") ||
+          text.includes("sport") ||
+          text.includes("football")
+        ) {
+          return "🏏";
+        }
+
+        if (
+          text.includes("food") ||
+          text.includes("drink") ||
+          text.includes("dinner")
+        ) {
+          return "🍽";
+        }
+
+        if (
+          text.includes("travel") ||
+          text.includes("adventure") ||
+          text.includes("trip")
+        ) {
+          return "✈";
+        }
+
+        if (
+          text.includes("learning") ||
+          text.includes("career") ||
+          text.includes("study")
+        ) {
+          return "✎";
+        }
+
+        if (
+          text.includes("music") ||
+          text.includes("dance") ||
+          text.includes("art")
+        ) {
+          return "♫";
+        }
+
+        if (
+          text.includes("party") ||
+          text.includes("nightlife")
+        ) {
+          return "✦";
+        }
+
+        if (text.includes("volunteer")) {
+          return "♥";
+        }
+
+        if (text.includes("online")) {
+          return "◉";
+        }
+
+        return "✦";
+      };
+
+      const showOptionalRow = (
+        rowId,
+        valueId,
+        value
+      ) => {
+        const cleanedValue = cleanText(value);
+
+        if (!cleanedValue) {
+          return;
+        }
+
+        document.getElementById(valueId).textContent =
+          cleanedValue;
+
+        document.getElementById(rowId)
+          .classList.remove("hidden");
+      };
+
+      const renderHostImage = (
+        imageUrl,
+        hostName
+      ) => {
+        const fallback =
+          document.getElementById("hostFallback");
+
+        const image =
+          document.getElementById("hostImage");
+
+        const initial =
+          cleanText(hostName).charAt(0).toUpperCase() || "N";
+
+        fallback.textContent = initial;
+
+        const safeImageUrl = cleanText(imageUrl);
+
+        if (!safeImageUrl) {
+          return;
+        }
+
+        try {
+          const parsedUrl = new URL(safeImageUrl);
+
+          if (parsedUrl.protocol !== "https:") {
+            return;
+          }
+
+          image.addEventListener(
+            "load",
+            () => {
+              fallback.classList.add("hidden");
+              image.classList.remove("hidden");
+            },
+            { once: true }
+          );
+
+          image.addEventListener(
+            "error",
+            () => {
+              image.classList.add("hidden");
+              fallback.classList.remove("hidden");
+            },
+            { once: true }
+          );
+
+          image.src = parsedUrl.href;
+        } catch (_) {
+          // Keep fallback avatar.
+        }
       };
 
       const renderPlan = (plan) => {
-        const title = safeText(plan.title);
+        if (!plan || typeof plan !== "object") {
+          showOnly(unavailableState);
+          return;
+        }
+
+        const title = cleanText(plan.title);
 
         if (!title) {
           showOnly(unavailableState);
           return;
         }
 
-        document.getElementById("planTitle").textContent = title;
+        const activity = cleanText(plan.activity);
+        const category = cleanText(plan.category);
 
-        const status = mapStatus(plan.status);
+        document.getElementById("planTitle").textContent =
+          title;
 
-        if (status) {
-          const statusBadge = document.getElementById("statusBadge");
-          statusBadge.textContent = status;
+        document.getElementById("activitySymbol").textContent =
+          getActivitySymbol(activity, category);
+
+        if (category) {
+          const categoryElement =
+            document.getElementById("planCategory");
+
+          categoryElement.textContent = category;
+          categoryElement.classList.remove("hidden");
+        }
+
+        const statusPresentation =
+          getStatusPresentation(plan.status);
+
+        if (statusPresentation) {
+          const statusBadge =
+            document.getElementById("statusBadge");
+
+          statusBadge.textContent =
+            statusPresentation.label;
+
+          statusBadge.className =
+            `status-badge ${statusPresentation.className}`.trim();
+
           statusBadge.classList.remove("hidden");
         }
 
-        const activityParts = [
-          safeText(plan.activity),
-          safeText(plan.category)
-        ].filter(Boolean);
-
-        if (activityParts.length) {
-          document.getElementById("activityValue").textContent =
-            activityParts.join(" • ");
-
-          document.getElementById("activityRow")
-            .classList.remove("hidden");
-        }
-
-        const dateText = formatDate(plan.startAt, plan.endAt);
-
-        if (dateText) {
-          document.getElementById("dateValue").textContent = dateText;
-          document.getElementById("dateRow").classList.remove("hidden");
-        }
-
-        const locationLabel = safeText(plan.locationLabel);
-        const locationType =
-          plan.locationType === "ONLINE"
-            ? "Online plan"
-            : plan.locationType === "IN_PERSON"
-              ? "In-person plan"
-              : "";
-
-        const locationText = [locationLabel, locationType]
+        const activityDescription = [
+          activity,
+          category
+        ]
           .filter(Boolean)
           .join(" • ");
 
-        if (locationText) {
-          document.getElementById("locationValue").textContent =
-            locationText;
+        showOptionalRow(
+          "activityRow",
+          "activityValue",
+          activityDescription
+        );
 
-          document.getElementById("locationRow")
-            .classList.remove("hidden");
+        const dateText = formatDateRange(
+          plan.startAt,
+          plan.endAt
+        );
+
+        showOptionalRow(
+          "dateRow",
+          "dateValue",
+          dateText
+        );
+
+        const locationLabel =
+          cleanText(plan.locationLabel);
+
+        let locationTypeLabel = "";
+
+        if (plan.locationType === "ONLINE") {
+          locationTypeLabel = "Online plan";
+        } else if (
+          plan.locationType === "IN_PERSON"
+        ) {
+          locationTypeLabel = "In-person plan";
         }
+
+        const locationDescription = [
+          locationLabel,
+          locationTypeLabel
+        ]
+          .filter(Boolean)
+          .join(" • ");
+
+        showOptionalRow(
+          "locationRow",
+          "locationValue",
+          locationDescription
+        );
 
         const hostName =
-          safeText(plan.hostDisplayName) || "NearMate member";
+          cleanText(plan.hostDisplayName) ||
+          "NearMate member";
 
-        document.getElementById("hostName").textContent = hostName;
+        document.getElementById("hostName").textContent =
+          hostName;
 
-        const initial = hostName.charAt(0).toUpperCase() || "N";
-        document.getElementById("hostFallback").textContent = initial;
+        renderHostImage(
+          plan.hostProfileImage,
+          hostName
+        );
 
-        const hostImageUrl = safeText(plan.hostProfileImage);
+        let canonicalUrl =
+          cleanText(plan.shareUrl);
 
-        if (hostImageUrl) {
-          try {
-            const parsedUrl = new URL(hostImageUrl);
-
-            if (parsedUrl.protocol === "https:") {
-              const image = document.getElementById("hostImage");
-              const fallback =
-                document.getElementById("hostFallback");
-
-              image.src = parsedUrl.href;
-
-              image.addEventListener("load", () => {
-                fallback.classList.add("hidden");
-                image.classList.remove("hidden");
-              });
-
-              image.addEventListener("error", () => {
-                image.classList.add("hidden");
-                fallback.classList.remove("hidden");
-              });
-            }
-          } catch (_) {
-            // Keep initials fallback.
-          }
+        if (!canonicalUrl) {
+          canonicalUrl =
+            `https://nearmatechat.com/plan/${encodedPlanId}`;
         }
 
-        const canonicalUrl =
-          safeText(plan.shareUrl) ||
-          `https://nearmatechat.com/plan/${encodedPlanId}`;
+        try {
+          const parsedShareUrl =
+            new URL(canonicalUrl);
 
-        document.getElementById("openAppButton").href = canonicalUrl;
+          if (
+            parsedShareUrl.protocol === "https:" &&
+            parsedShareUrl.hostname === "nearmatechat.com"
+          ) {
+            document.getElementById("openAppButton").href =
+              parsedShareUrl.href;
+          } else {
+            document.getElementById("openAppButton").href =
+              `https://nearmatechat.com/plan/${encodedPlanId}`;
+          }
+        } catch (_) {
+          document.getElementById("openAppButton").href =
+            `https://nearmatechat.com/plan/${encodedPlanId}`;
+        }
 
         showOnly(planState);
       };
 
       const controller = new AbortController();
+
       const timeoutId = window.setTimeout(
         () => controller.abort(),
         8000
       );
 
-      fetch(`${API_URL}?planId=${encodedPlanId}`, {
+      const requestUrl =
+        `${API_URL}?planId=${encodedPlanId}`;
+
+      fetch(requestUrl, {
         method: "GET",
-        signal: controller.signal,
         headers: {
           Accept: "application/json"
-        }
+        },
+        signal: controller.signal
       })
         .then((response) => {
           if (!response.ok) {
@@ -700,7 +1480,11 @@
           return response.json();
         })
         .then((data) => {
-          if (!data || data.success !== true || !data.plan) {
+          if (
+            !data ||
+            data.success !== true ||
+            !data.plan
+          ) {
             showOnly(unavailableState);
             return;
           }
@@ -713,6 +1497,8 @@
         .finally(() => {
           window.clearTimeout(timeoutId);
         });
+
+      void PLAY_STORE_URL;
     })();
   </script>
 </body>
