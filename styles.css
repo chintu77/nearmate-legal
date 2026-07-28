@@ -18,6 +18,10 @@
     );
 }
 
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -26,6 +30,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
 }
 
 body {
@@ -67,16 +72,26 @@ main {
     margin: 0 auto;
 }
 
+.hero-section,
+.about-section,
+.how-section,
+.download-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+}
 
 /* =====================================================
-   HERO
+   HERO SECTION
 ===================================================== */
 
 .hero-section {
     position: relative;
-    min-height: 760px;
+    display: flex;
+    min-height: 100vh;
+    min-height: 100svh;
     overflow: hidden;
-    padding: 72px 0 88px;
+    align-items: center;
+    padding: 28px 0;
     background:
         radial-gradient(
             circle at 15% 20%,
@@ -101,67 +116,90 @@ main {
     position: relative;
     z-index: 4;
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(520px, 1.1fr);
-    gap: 50px;
+    grid-template-columns: minmax(0, 0.92fr) minmax(480px, 1.08fr);
+    gap: 36px;
     align-items: center;
-    width: min(1240px, calc(100% - 48px));
-    min-height: 620px;
+    width: min(1220px, calc(100% - 48px));
+    height: auto;
     margin: 0 auto;
 }
 
 .hero-copy {
+    width: 100%;
     max-width: 560px;
 }
 
 .brand-logo {
-    width: min(500px, 100%);
-    margin-bottom: 40px;
-    border-radius: 18px;
+    width: min(430px, 100%);
+    max-height: 150px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    object-fit: contain;
     mix-blend-mode: multiply;
 }
 
-.hero-copy h1 {
-    max-width: 600px;
-    margin-bottom: 24px;
-    color: var(--navy);
-    font-size: clamp(3rem, 5.6vw, 5.25rem);
-    line-height: 0.98;
+/* =====================================================
+   HERO TITLE
+===================================================== */
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    margin-bottom: 18px;
+    font-size: clamp(2.8rem, 4.7vw, 4.8rem);
+    font-weight: 850;
+    line-height: 1.02;
     letter-spacing: -0.055em;
 }
 
-.hero-copy h1 span {
-    display: block;
-    margin-top: 10px;
+.hero-title-line {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.24em;
+    white-space: nowrap;
+}
+
+.title-pink {
     color: var(--pink);
 }
 
-.hero-description {
-    max-width: 590px;
-    color: var(--muted);
-    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-    line-height: 1.75;
+.title-purple {
+    color: var(--purple);
 }
+
+.hero-description {
+    max-width: 560px;
+    color: var(--muted);
+    font-size: clamp(1rem, 1.3vw, 1.16rem);
+    line-height: 1.6;
+}
+
+/* =====================================================
+   DOWNLOAD ROW
+===================================================== */
 
 .download-row {
     display: flex;
-    gap: 26px;
+    gap: 20px;
     align-items: center;
-    margin-top: 34px;
+    margin-top: 24px;
 }
 
 .play-store-button {
     display: inline-flex;
-    gap: 14px;
+    gap: 12px;
     align-items: center;
     justify-content: center;
-    min-width: 225px;
-    min-height: 76px;
-    padding: 12px 24px;
+    min-width: 210px;
+    min-height: 66px;
+    padding: 10px 20px;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 16px;
+    border-radius: 15px;
     color: var(--white);
     background: #090909;
-    box-shadow: 0 16px 35px rgba(27, 13, 40, 0.2);
+    box-shadow: 0 14px 30px rgba(27, 13, 40, 0.2);
     transition:
         transform 180ms ease,
         box-shadow 180ms ease;
@@ -173,8 +211,8 @@ main {
 }
 
 .play-icon {
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
     flex: 0 0 auto;
 }
 
@@ -192,29 +230,33 @@ main {
 }
 
 .play-store-button strong {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
 }
 
+/* =====================================================
+   QR CODE
+===================================================== */
+
 .qr-wrapper {
     display: grid;
-    grid-template-columns: 108px 120px;
-    gap: 13px;
+    grid-template-columns: 90px 108px;
+    gap: 12px;
     align-items: center;
 }
 
 .qr-code {
-    width: 108px;
-    height: 108px;
-    padding: 7px;
-    border-radius: 14px;
+    width: 90px;
+    height: 90px;
+    padding: 6px;
+    border-radius: 12px;
     background: var(--white);
-    box-shadow: 0 14px 32px rgba(78, 39, 136, 0.15);
+    box-shadow: 0 12px 26px rgba(78, 39, 136, 0.15);
 }
 
 .qr-wrapper p {
     color: var(--muted);
-    font-size: 0.88rem;
+    font-size: 0.84rem;
     line-height: 1.45;
 }
 
@@ -223,13 +265,17 @@ main {
     color: var(--navy);
 }
 
+/* =====================================================
+   HERO BENEFITS
+===================================================== */
+
 .hero-points {
     display: flex;
     flex-wrap: wrap;
-    gap: 18px 24px;
-    margin-top: 34px;
+    gap: 12px 20px;
+    margin-top: 22px;
     color: var(--text);
-    font-size: 0.91rem;
+    font-size: 0.85rem;
     font-weight: 650;
 }
 
@@ -239,7 +285,6 @@ main {
     align-items: center;
 }
 
-
 /* =====================================================
    PHONE SCREENSHOT SHOWCASE
 ===================================================== */
@@ -247,7 +292,7 @@ main {
 .screens-showcase {
     position: relative;
     width: 100%;
-    min-height: 660px;
+    min-height: min(620px, 74vh);
 }
 
 .phone {
@@ -285,29 +330,33 @@ main {
 
 .phone-home {
     z-index: 2;
-    top: 55px;
-    left: 2%;
-    width: 245px;
-    height: 540px;
-    transform: rotate(-8deg);
+    top: 52px;
+    left: 1%;
+    width: 220px;
+    height: 490px;
+    transform: rotate(-7deg);
 }
 
 .phone-discover {
     z-index: 4;
     top: 0;
     left: 31%;
-    width: 275px;
-    height: 610px;
+    width: 250px;
+    height: 555px;
 }
 
 .phone-chat {
     z-index: 3;
-    top: 70px;
+    top: 58px;
     right: 0;
-    width: 235px;
-    height: 525px;
-    transform: rotate(8deg);
+    width: 215px;
+    height: 480px;
+    transform: rotate(7deg);
 }
+
+/* =====================================================
+   FLOATING BADGES
+===================================================== */
 
 .floating-badge {
     position: absolute;
@@ -344,6 +393,10 @@ main {
     bottom: 56px;
     left: 3%;
 }
+
+/* =====================================================
+   HERO DECORATION
+===================================================== */
 
 .hero-glow {
     position: absolute;
@@ -417,26 +470,29 @@ main {
     height: 73px;
 }
 
-
 /* =====================================================
-   ABOUT
+   ABOUT SECTION
 ===================================================== */
 
 .about-section {
-    padding: 110px 0;
+    display: flex;
+    min-height: 100vh;
+    min-height: 100svh;
+    align-items: center;
+    padding: 48px 0;
     background: var(--white);
 }
 
 .about-layout {
     display: grid;
-    grid-template-columns: minmax(400px, 0.9fr) minmax(0, 1.1fr);
-    gap: 100px;
+    grid-template-columns: minmax(350px, 0.9fr) minmax(0, 1.1fr);
+    gap: 70px;
     align-items: center;
 }
 
 .about-visual {
     position: relative;
-    min-height: 630px;
+    min-height: min(560px, 72vh);
 }
 
 .app-icon-card {
@@ -444,10 +500,10 @@ main {
     z-index: 3;
     top: 22px;
     left: 0;
-    width: 190px;
-    padding: 18px;
+    width: 170px;
+    padding: 16px;
     border: 1px solid var(--border);
-    border-radius: 38px;
+    border-radius: 34px;
     background: var(--white);
     box-shadow: var(--shadow);
     transform: rotate(-7deg);
@@ -461,8 +517,8 @@ main {
     position: absolute;
     top: 0;
     right: 25px;
-    width: 310px;
-    height: 620px;
+    width: 275px;
+    height: min(550px, 70vh);
     overflow: hidden;
     padding: 8px;
     border: 3px solid #251f31;
@@ -483,7 +539,7 @@ main {
 .privacy-label {
     position: absolute;
     z-index: 5;
-    bottom: 60px;
+    bottom: 50px;
     left: 14px;
     display: flex;
     gap: 13px;
@@ -519,6 +575,10 @@ main {
     color: var(--muted);
 }
 
+/* =====================================================
+   TEXT STYLES
+===================================================== */
+
 .eyebrow {
     display: inline-block;
     margin-bottom: 16px;
@@ -542,16 +602,20 @@ main {
 }
 
 .about-copy > p {
-    margin-top: 22px;
+    margin-top: 18px;
     color: var(--muted);
-    font-size: 1.06rem;
-    line-height: 1.75;
+    font-size: 1rem;
+    line-height: 1.65;
 }
+
+/* =====================================================
+   ABOUT FEATURE CARDS
+===================================================== */
 
 .about-features {
     display: grid;
-    gap: 17px;
-    margin-top: 32px;
+    gap: 14px;
+    margin-top: 26px;
 }
 
 .about-features article {
@@ -559,7 +623,7 @@ main {
     grid-template-columns: 52px 1fr;
     gap: 15px;
     align-items: start;
-    padding: 18px;
+    padding: 15px 18px;
     border: 1px solid var(--border);
     border-radius: 18px;
     background: linear-gradient(
@@ -591,17 +655,20 @@ main {
 
 .about-features p {
     color: var(--muted);
-    font-size: 0.91rem;
-    line-height: 1.55;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
-
 
 /* =====================================================
    HOW IT WORKS
 ===================================================== */
 
 .how-section {
-    padding: 105px 0 120px;
+    display: flex;
+    min-height: 100vh;
+    min-height: 100svh;
+    align-items: center;
+    padding: 48px 0;
     background:
         radial-gradient(
             circle at 15% 15%,
@@ -618,15 +685,15 @@ main {
 
 .section-heading {
     max-width: 720px;
-    margin: 0 auto 58px;
+    margin: 0 auto 34px;
     text-align: center;
 }
 
 .section-heading p {
-    margin-top: 18px;
+    margin-top: 14px;
     color: var(--muted);
-    font-size: 1.05rem;
-    line-height: 1.65;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .steps-grid {
@@ -637,8 +704,8 @@ main {
 
 .step-card {
     position: relative;
-    min-height: 310px;
-    padding: 36px 25px 28px;
+    min-height: 270px;
+    padding: 28px 22px 24px;
     overflow: hidden;
     border: 1px solid var(--border);
     border-radius: 26px;
@@ -672,38 +739,41 @@ main {
 
 .step-icon {
     display: grid;
-    width: 84px;
-    height: 84px;
-    margin: 16px auto 25px;
+    width: 72px;
+    height: 72px;
+    margin: 12px auto 20px;
     place-items: center;
-    border-radius: 26px;
+    border-radius: 23px;
     background: linear-gradient(
         145deg,
         #ffe3f0,
         #e7ddff
     );
-    font-size: 2.4rem;
+    font-size: 2rem;
 }
 
 .step-card h3 {
-    margin-bottom: 13px;
+    margin-bottom: 12px;
     color: var(--navy);
-    font-size: 1.08rem;
+    font-size: 1.05rem;
 }
 
 .step-card p {
     color: var(--muted);
-    font-size: 0.93rem;
-    line-height: 1.65;
+    font-size: 0.9rem;
+    line-height: 1.55;
 }
 
-
 /* =====================================================
-   DOWNLOAD
+   DOWNLOAD SECTION
 ===================================================== */
 
 .download-section {
-    padding: 55px 30px;
+    display: flex;
+    min-height: 100vh;
+    min-height: 100svh;
+    align-items: center;
+    padding: 40px 30px;
     background: var(--white);
 }
 
@@ -803,12 +873,26 @@ main {
     font-size: 0.84rem;
 }
 
-
 /* =====================================================
-   RESPONSIVE
+   MEDIUM DESKTOP / TABLET
 ===================================================== */
 
 @media (max-width: 1120px) {
+
+    html {
+        scroll-snap-type: none;
+    }
+
+    .hero-section,
+    .about-section,
+    .how-section,
+    .download-section {
+        min-height: auto;
+    }
+
+    .hero-section {
+        padding: 50px 0 70px;
+    }
 
     .hero-content {
         grid-template-columns: 1fr;
@@ -820,7 +904,16 @@ main {
         text-align: center;
     }
 
+    .hero-title-line {
+        justify-content: center;
+    }
+
     .brand-logo {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .hero-description {
         margin-right: auto;
         margin-left: auto;
     }
@@ -832,7 +925,12 @@ main {
 
     .screens-showcase {
         width: min(760px, 100%);
-        margin: 25px auto 0;
+        min-height: 610px;
+        margin: 20px auto 0;
+    }
+
+    .about-section {
+        padding: 80px 0;
     }
 
     .about-layout {
@@ -842,6 +940,7 @@ main {
 
     .about-visual {
         width: min(560px, 100%);
+        min-height: 560px;
         margin: 0 auto;
     }
 
@@ -855,8 +954,16 @@ main {
         text-align: left;
     }
 
+    .how-section {
+        padding: 80px 0;
+    }
+
     .steps-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .download-section {
+        padding: 55px 30px;
     }
 
     .download-card {
@@ -868,38 +975,62 @@ main {
     }
 }
 
+/* =====================================================
+   MOBILE AND SMALL TABLET
+===================================================== */
+
 @media (max-width: 760px) {
 
     .hero-section {
         min-height: auto;
-        padding: 38px 0 70px;
+        overflow: hidden;
+        padding: 28px 0 55px;
     }
 
     .hero-content {
-        width: min(100% - 28px, 640px);
-        gap: 28px;
+        width: min(100% - 26px, 640px);
+        gap: 22px;
     }
 
     .brand-logo {
-        margin-bottom: 26px;
-        border-radius: 10px;
+        width: min(350px, 100%);
+        max-height: 115px;
+        margin-bottom: 16px;
     }
 
-    .hero-copy h1 {
-        font-size: clamp(2.7rem, 14vw, 4.4rem);
+    .hero-title {
+        gap: 2px;
+        font-size: clamp(2.25rem, 11vw, 3.5rem);
+        line-height: 1.03;
+    }
+
+    .hero-title-line {
+        gap: 0.18em;
+        justify-content: center;
     }
 
     .hero-description {
-        font-size: 1rem;
-        line-height: 1.65;
+        font-size: 0.96rem;
     }
 
     .download-row {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .play-store-button {
+        min-width: 195px;
+        min-height: 62px;
     }
 
     .qr-wrapper {
-        grid-template-columns: 100px auto;
+        grid-template-columns: 82px 105px;
+    }
+
+    .qr-code {
+        width: 82px;
+        height: 82px;
     }
 
     .hero-points {
@@ -909,27 +1040,25 @@ main {
     }
 
     .screens-showcase {
-        min-height: 510px;
-        transform: scale(0.84);
+        width: 720px;
+        min-height: 455px;
+        margin-left: 50%;
+        transform:
+            translateX(-50%)
+            scale(0.76);
         transform-origin: top center;
     }
 
     .phone-home {
-        left: -4%;
-        width: 215px;
-        height: 475px;
+        left: 0;
     }
 
     .phone-discover {
-        left: 27%;
-        width: 235px;
-        height: 525px;
+        left: 31%;
     }
 
     .phone-chat {
-        right: -5%;
-        width: 205px;
-        height: 460px;
+        right: 0;
     }
 
     .floating-badge {
@@ -938,11 +1067,16 @@ main {
 
     .about-section,
     .how-section {
-        padding: 80px 0;
+        min-height: auto;
+        padding: 72px 0;
     }
 
     .section-container {
         width: min(100% - 28px, 620px);
+    }
+
+    .about-layout {
+        gap: 50px;
     }
 
     .about-visual {
@@ -973,6 +1107,7 @@ main {
     }
 
     .download-section {
+        min-height: auto;
         padding: 28px 14px 40px;
     }
 
@@ -1004,16 +1139,42 @@ main {
     }
 }
 
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
 @media (max-width: 520px) {
+
+    .hero-title {
+        font-size: clamp(2rem, 10.2vw, 2.75rem);
+    }
+
+    .hero-title-line {
+        justify-content: center;
+        white-space: nowrap;
+    }
+
+    .download-row {
+        flex-direction: column;
+    }
+
+    .qr-wrapper {
+        grid-template-columns: 88px auto;
+    }
+
+    .qr-code {
+        width: 88px;
+        height: 88px;
+    }
 
     .screens-showcase {
         width: 620px;
+        min-height: 370px;
         margin-left: 50%;
         transform:
             translateX(-50%)
-            scale(0.61);
+            scale(0.56);
         transform-origin: top center;
-        min-height: 400px;
     }
 
     .phone-home {
@@ -1056,5 +1217,81 @@ main {
 
     .download-qr img {
         width: 130px;
+    }
+}
+
+/* =====================================================
+   SHORT DESKTOP SCREENS
+   Helps keep Section 1 fully visible on laptops
+===================================================== */
+
+@media (min-width: 1121px) and (max-height: 820px) {
+
+    .hero-section {
+        padding: 18px 0;
+    }
+
+    .hero-content {
+        grid-template-columns: minmax(0, 0.95fr) minmax(450px, 1.05fr);
+        gap: 24px;
+    }
+
+    .brand-logo {
+        width: min(360px, 100%);
+        max-height: 110px;
+        margin-bottom: 12px;
+    }
+
+    .hero-title {
+        margin-bottom: 12px;
+        font-size: clamp(2.5rem, 4.2vw, 4rem);
+    }
+
+    .hero-description {
+        font-size: 0.98rem;
+        line-height: 1.5;
+    }
+
+    .download-row {
+        margin-top: 16px;
+    }
+
+    .hero-points {
+        margin-top: 14px;
+    }
+
+    .screens-showcase {
+        min-height: 540px;
+        transform: scale(0.88);
+        transform-origin: center center;
+    }
+
+    .about-section,
+    .how-section {
+        padding: 30px 0;
+    }
+
+    .about-visual {
+        min-height: 510px;
+    }
+
+    .about-phone {
+        height: 500px;
+    }
+
+    .section-heading {
+        margin-bottom: 24px;
+    }
+
+    .step-card {
+        min-height: 240px;
+        padding: 24px 18px 20px;
+    }
+
+    .step-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 15px;
+        font-size: 1.8rem;
     }
 }
