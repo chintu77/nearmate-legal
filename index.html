@@ -8,7 +8,11 @@
     <meta name="theme-color" content="#ff3f8f">
 
     <link rel="icon" type="image/png" href="assets/nearmate-app-icon.png">
-    <link rel="stylesheet" href="styles.css?v=3.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css?v=4.0">
 </head>
 
 <body>
@@ -16,47 +20,170 @@
 <main>
 
     <!-- =================================================
-         SECTION 1 — HERO
+         SECTION 1 — HERO SECTION
     ================================================== -->
     <section class="page-section hero-section">
-        <!-- Glows & Background Decorations -->
-        <div class="hero-glow hero-glow-left"></div>
-        <div class="hero-glow hero-glow-right"></div>
+        <div class="hero-bg-glow glow-1"></div>
+        <div class="hero-bg-glow glow-2"></div>
 
-        <!-- Decorative Sky: Stars, Floating Hearts & Location Pins -->
-        <div class="hero-sky-decor" aria-hidden="true">
-            <span class="star star-1">✨</span>
-            <span class="star star-2">✨</span>
-            <span class="heart heart-1">💖</span>
-            <span class="heart heart-2">💕</span>
-            <span class="pin pin-1">📍</span>
-            <span class="pin pin-2">📍</span>
-        </div>
-
-        <div class="hero-content">
-            <div class="hero-copy">
-                <!-- Point 1: Large Banner Logo spanning the width of Discover text -->
+        <div class="container hero-container">
+            <!-- Navigation Header -->
+            <header class="hero-header">
                 <img class="brand-logo" src="assets/nearmate-logo.png" alt="NearMate — Discover People Around You">
+            </header>
 
-                <h1 class="hero-title">
-                    <span class="hero-title-line">
-                        <span class="title-pink">Discover</span>
-                        <span class="title-purple">People</span>
-                    </span>
-                    <span class="hero-title-line">
-                        <span class="title-purple">Around</span>
-                        <span class="title-pink">You</span>
-                    </span>
-                </h1>
+            <div class="hero-grid">
+                <!-- Left Column: Copy & Play Store CTA -->
+                <div class="hero-left">
+                    <h1 class="hero-main-title">
+                        <span class="title-pink">Discover Nearby.</span>
+                        <span class="title-purple">Chat Freely.</span>
+                    </h1>
 
-                <p class="hero-description">
-                    Meet nearby people, build your circle, chat privately,
-                    and connect through real-world plans with NearMate.
-                </p>
+                    <p class="hero-subtext">
+                        Find interesting people near you and start real conversations with NearMate. Build your trusted circle and connect effortlessly.
+                    </p>
 
-                <!-- Point 4: Enlarged Google Play & QR Code -->
-                <div class="download-row">
-                    <a class="play-store-button play-store-hero" href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" rel="noopener noreferrer" aria-label="Download NearMate on Google Play">
+                    <div class="download-row">
+                        <a class="play-store-btn" href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" rel="noopener noreferrer" aria-label="Download NearMate on Google Play">
+                            <svg class="play-icon" viewBox="0 0 64 64" aria-hidden="true">
+                                <path fill="#00d2ff" d="M8 6l30 26L8 58z"/>
+                                <path fill="#00f076" d="M8 6l36 20-6 6z"/>
+                                <path fill="#ffd400" d="M38 32l6 6L8 58z"/>
+                                <path fill="#ff3b5c" d="M44 26l12 6-12 6-6-6z"/>
+                            </svg>
+                            <span>
+                                <small>GET IT ON</small>
+                                <strong>Google Play</strong>
+                            </span>
+                        </a>
+
+                        <div class="qr-box">
+                            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.nearmatechat.app" alt="Scan QR code to download NearMate">
+                            <div class="qr-info">
+                                <span>Scan to download</span>
+                                <strong>NearMate App</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-pill-badges">
+                        <span class="pill">📍 Nearby discovery</span>
+                        <span class="pill">💬 Private conversations</span>
+                        <span class="pill">💜 Meaningful circles</span>
+                    </div>
+                </div>
+
+                <!-- Right Column: Recreating the exact Hero Illustration Visual from Mobile App -->
+                <div class="hero-right">
+                    <div class="app-hero-card-visual">
+                        <img class="hero-banner-img" src="assets/home-screen.jpg" alt="NearMate Discover Nearby Chat Freely Banner Illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =================================================
+         SECTION 2 — ABOUT NEARMATE (No Mobile Mockup)
+    ================================================== -->
+    <section class="page-section about-section">
+        <div class="container">
+            <div class="section-center-head">
+                <span class="eyebrow-tag">ABOUT NEARMATE</span>
+                <h2 class="section-headline">A simpler way to <span class="gradient-text">connect nearby</span></h2>
+                <p class="section-desc">NearMate is a social discovery app designed to help you discover people around you, grow your trusted circle, chat privately, and connect through real-world plans.</p>
+            </div>
+
+            <!-- Modern 3-Column Premium UI Cards matching app layout -->
+            <div class="about-cards-grid">
+                <div class="app-style-card">
+                    <div class="card-badge-icon badge-pink">📍</div>
+                    <h3>Discover Nearby</h3>
+                    <p>Find people who match your interests and explore profiles based on your real-time location.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" class="app-gradient-btn">Discover People</a>
+                </div>
+
+                <div class="app-style-card">
+                    <div class="card-badge-icon badge-purple">💜</div>
+                    <h3>My Circle</h3>
+                    <p>Continue chatting with your friends and trusted connections in a safe, private space.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" class="app-gradient-btn">Open My Circle</a>
+                </div>
+
+                <div class="app-style-card">
+                    <div class="card-badge-icon badge-pink-purple">💬</div>
+                    <h3>Chat Privately</h3>
+                    <p>Start 1-on-1 conversations freely with people in your circle and make real-world plans.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" class="app-gradient-btn">Start Chatting</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =================================================
+         SECTION 3 — HOW IT WORKS
+    ================================================== -->
+    <section class="page-section how-section">
+        <div class="container">
+            <div class="section-center-head">
+                <span class="eyebrow-tag">SIMPLE AND SOCIAL</span>
+                <h2 class="section-headline">How <span class="gradient-text">NearMate</span> works</h2>
+                <p class="section-desc">Start discovering and building your circle in four simple steps.</p>
+            </div>
+
+            <div class="steps-4-grid">
+                <article class="step-app-card">
+                    <span class="step-num">1</span>
+                    <div class="step-icon-bg">👤</div>
+                    <h3>Create Your Profile</h3>
+                    <p>Set up your profile and choose how you want to discover people.</p>
+                </article>
+
+                <article class="step-app-card">
+                    <span class="step-num">2</span>
+                    <div class="step-icon-bg">📍</div>
+                    <h3>Discover Nearby</h3>
+                    <p>Find interesting people around you based on your location and preferences.</p>
+                </article>
+
+                <article class="step-app-card">
+                    <span class="step-num">3</span>
+                    <div class="step-icon-bg">👥</div>
+                    <h3>Build Your Circle</h3>
+                    <p>Send connection requests and grow your own trusted social circle.</p>
+                </article>
+
+                <article class="step-app-card">
+                    <span class="step-num">4</span>
+                    <div class="step-icon-bg">💬</div>
+                    <h3>Chat and Make Plans</h3>
+                    <p>Chat privately and connect through real-world activities and plans.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =================================================
+         SECTION 4 — CTA BANNER
+    ================================================== -->
+    <section class="page-section cta-section">
+        <div class="container">
+            <div class="cta-gradient-box">
+                <div class="cta-left">
+                    <img src="assets/nearmate-app-icon.png" alt="NearMate App Icon" class="cta-app-icon">
+                    <div>
+                        <span class="cta-tag">DOWNLOAD NEARMATE</span>
+                        <h2>Your next connection <span>may be nearby.</span></h2>
+                        <p>Discover people around you and start building your circle today.</p>
+                    </div>
+                </div>
+
+                <div class="cta-right">
+                    <a class="play-store-btn play-store-btn-large" href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" rel="noopener noreferrer">
                         <svg class="play-icon" viewBox="0 0 64 64" aria-hidden="true">
                             <path fill="#00d2ff" d="M8 6l30 26L8 58z"/>
                             <path fill="#00f076" d="M8 6l36 20-6 6z"/>
@@ -69,203 +196,13 @@
                         </span>
                     </a>
 
-                    <div class="qr-wrapper qr-wrapper-hero">
-                        <img class="qr-code qr-code-hero" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.nearmatechat.app" alt="Scan to download NearMate from Google Play">
-                        <p>
-                            Scan to download
-                            <strong>NearMate</strong>
-                        </p>
+                    <div class="cta-qr-box">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.nearmatechat.app" alt="NearMate QR Code">
+                        <div>
+                            <strong>Scan to download</strong>
+                            <small>NearMate on Android</small>
+                        </div>
                     </div>
-                </div>
-
-                <div class="hero-points">
-                    <span><span class="point-icon">📍</span> Nearby discovery</span>
-                    <span><span class="point-icon">💬</span> Private conversations</span>
-                    <span><span class="point-icon">💜</span> Meaningful circles</span>
-                </div>
-            </div>
-
-            <!-- Point 2: ALL 4 MOBILE SCREENS SHOWN IN SECTION 1 -->
-            <div class="screens-showcase-4">
-                <div class="phone phone-1">
-                    <img src="assets/home-screen.jpg" alt="NearMate home screen">
-                </div>
-                <div class="phone phone-2">
-                    <img src="assets/discover-screen.jpg" alt="NearMate Discover screen">
-                </div>
-                <div class="phone phone-3">
-                    <img src="assets/chat-screen.png" alt="NearMate private chat screen">
-                </div>
-                <div class="phone phone-4">
-                    <img src="assets/menu-screen.jpg" alt="NearMate menu and settings screen">
-                </div>
-            </div>
-        </div>
-
-        <!-- Point 5: Building Skyline & Chatting People Illustration Background -->
-        <div class="city-illustration-wrapper" aria-hidden="true">
-            <div class="chatting-people-avatars">
-                <span class="avatar avatar-boy">👦🏻 <i class="chat-bubble">Hi!</i></span>
-                <span class="avatar avatar-girl">👧🏽 <i class="chat-bubble">Hey nearby!</i></span>
-                <span class="avatar avatar-boy2">👨🏼 <i class="chat-bubble">Let's meet!</i></span>
-                <span class="avatar avatar-girl2">👩🏻 <i class="chat-bubble">Joined circle!</i></span>
-            </div>
-            <div class="city-decoration">
-                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- =================================================
-         SECTION 2 — ABOUT
-    ================================================== -->
-    <section class="page-section about-section">
-        <div class="section-container about-layout">
-            <div class="about-visual">
-                <!-- Point 3: Removed NearMate Logo Image (app-icon-card) from Section 2 -->
-                <div class="about-phone">
-                    <img src="assets/menu-screen.jpg" alt="NearMate profile and privacy settings">
-                </div>
-
-                <div class="privacy-label">
-                    <span>🛡️</span>
-                    <div>
-                        <strong>Your profile</strong>
-                        <small>Your control</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-copy">
-                <span class="eyebrow">ABOUT NEARMATE</span>
-
-                <h2 class="gradient-heading">
-                    A simpler way to
-                    <span>connect nearby</span>
-                </h2>
-
-                <p>
-                    NearMate is a social discovery app designed to help you
-                    discover people around you, grow your trusted circle,
-                    chat privately, and connect through nearby plans and
-                    activities.
-                </p>
-
-                <p>
-                    Whether you want to meet new people, continue a conversation
-                    with your circle, or make plans together, NearMate keeps
-                    everything in one simple social experience.
-                </p>
-
-                <div class="about-features">
-                    <article>
-                        <div class="feature-icon">📍</div>
-                        <div>
-                            <h3>Discover Nearby</h3>
-                            <p>Explore profiles based on your location and preferences.</p>
-                        </div>
-                    </article>
-
-                    <article>
-                        <div class="feature-icon">💜</div>
-                        <div>
-                            <h3>Build Your Circle</h3>
-                            <p>Connect with people and build your trusted social circle.</p>
-                        </div>
-                    </article>
-
-                    <article>
-                        <div class="feature-icon">💬</div>
-                        <div>
-                            <h3>Chat Privately</h3>
-                            <p>Continue private conversations with the people in your circle.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- =================================================
-         SECTION 3 — HOW IT WORKS
-    ================================================== -->
-    <section class="page-section how-section">
-        <div class="section-container how-container">
-            <div class="section-heading">
-                <span class="eyebrow">SIMPLE AND SOCIAL</span>
-                <h2 class="gradient-heading">
-                    How <span>NearMate</span> works
-                </h2>
-                <p>Start discovering and building your circle in four simple steps.</p>
-            </div>
-
-            <div class="steps-grid">
-                <article class="step-card">
-                    <span class="step-number">1</span>
-                    <div class="step-icon">👤</div>
-                    <h3>Create Your Profile</h3>
-                    <p>Set up your profile and choose how you want to discover people.</p>
-                </article>
-
-                <article class="step-card">
-                    <span class="step-number">2</span>
-                    <div class="step-icon">📍</div>
-                    <h3>Discover Nearby</h3>
-                    <p>Find interesting people around you based on your location and preferences.</p>
-                </article>
-
-                <article class="step-card">
-                    <span class="step-number">3</span>
-                    <div class="step-icon">👥</div>
-                    <h3>Build Your Circle</h3>
-                    <p>Send connection requests and grow your own trusted social circle.</p>
-                </article>
-
-                <article class="step-card">
-                    <span class="step-number">4</span>
-                    <div class="step-icon">💬</div>
-                    <h3>Chat and Make Plans</h3>
-                    <p>Chat privately and connect through real-world activities and plans.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- =================================================
-         SECTION 4 — DOWNLOAD BANNER
-    ================================================== -->
-    <section class="page-section download-section">
-        <div class="download-card">
-            <div class="download-brand">
-                <img src="assets/nearmate-app-icon.png" alt="NearMate app icon">
-                <div>
-                    <span class="download-label">DOWNLOAD NEARMATE</span>
-                    <h2>Your next connection <span>may be nearby.</span></h2>
-                    <p>Discover people around you and start building your circle.</p>
-                </div>
-            </div>
-
-            <a class="play-store-button play-store-button-large" href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" rel="noopener noreferrer" aria-label="Download NearMate on Google Play">
-                <svg class="play-icon" viewBox="0 0 64 64" aria-hidden="true">
-                    <path fill="#00d2ff" d="M8 6l30 26L8 58z"/>
-                    <path fill="#00f076" d="M8 6l36 20-6 6z"/>
-                    <path fill="#ffd400" d="M38 32l6 6L8 58z"/>
-                    <path fill="#ff3b5c" d="M44 26l12 6-12 6-6-6z"/>
-                </svg>
-                <span>
-                    <small>GET IT ON</small>
-                    <strong>Google Play</strong>
-                </span>
-            </a>
-
-            <div class="download-qr">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.nearmatechat.app" alt="Scan to download NearMate">
-                <div>
-                    <strong>Scan to download</strong>
-                    <span>NearMate on Android</span>
                 </div>
             </div>
         </div>
