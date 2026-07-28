@@ -66,10 +66,6 @@ main {
     overflow: hidden;
 }
 
-
-/* =====================================================
-   SHARED TYPOGRAPHY & TITLES
-===================================================== */
 .eyebrow {
     display: inline-block;
     margin-bottom: 11px;
@@ -88,14 +84,6 @@ main {
     -webkit-text-fill-color: transparent;
 }
 
-.gradient-heading span {
-    background: inherit;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-}
-
 
 /* =====================================================
    SECTION 1 — HERO
@@ -103,10 +91,10 @@ main {
 .hero-section {
     display: flex;
     align-items: center;
-    padding: 60px 0 100px;
+    padding: 60px 0 110px;
     background:
-        radial-gradient(circle at 5% 25%, rgba(255, 73, 158, 0.16), transparent 35%),
-        radial-gradient(circle at 95% 82%, rgba(124, 66, 245, 0.25), transparent 40%),
+        radial-gradient(circle at 5% 25%, rgba(255, 73, 158, 0.18), transparent 38%),
+        radial-gradient(circle at 95% 82%, rgba(124, 66, 245, 0.28), transparent 42%),
         linear-gradient(135deg, #fff9fc 0%, #ffeef6 46%, #eee5ff 100%);
 }
 
@@ -114,10 +102,10 @@ main {
     position: relative;
     z-index: 3;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 40px;
     align-items: center;
-    width: min(1200px, calc(100% - 48px));
+    width: min(1240px, calc(100% - 48px));
     margin: 0 auto;
 }
 
@@ -128,11 +116,13 @@ main {
     width: 100%;
 }
 
+/* ISSUE 1 FIX: Banner logo enlarged to match full title width */
 .brand-logo {
-    width: min(380px, 92%);
-    max-height: 100px;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    max-height: 140px;
     margin-bottom: 24px;
-    border-radius: 18px;
     object-fit: contain;
     object-position: left center;
 }
@@ -164,91 +154,58 @@ main {
 .hero-description {
     width: min(520px, 100%);
     color: var(--text);
-    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    font-size: clamp(1rem, 1.2vw, 1.12rem);
     line-height: 1.6;
 }
 
+/* ISSUE 4 FIX: Larger Google Play & QR code in section 1 */
 .download-row {
     display: flex;
     align-items: center;
     gap: 24px;
-    margin-top: 28px;
+    margin-top: 30px;
     flex-wrap: wrap;
 }
 
-.play-store-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 13px;
-    width: 210px;
-    min-width: 210px;
-    height: 64px;
-    padding: 10px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    color: var(--white);
-    background: #090909;
-    box-shadow: 0 16px 36px rgba(29, 13, 43, 0.22);
-    transition: transform 180ms ease, box-shadow 180ms ease;
+.play-store-hero {
+    width: 230px !important;
+    min-width: 230px !important;
+    height: 72px !important;
+    padding: 12px 22px !important;
+    border-radius: 18px !important;
 }
 
-.play-store-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 22px 44px rgba(29, 13, 43, 0.28);
+.play-store-hero .play-icon {
+    width: 42px !important;
+    height: 42px !important;
 }
 
-.play-icon {
-    width: 36px;
-    height: 36px;
-    flex: 0 0 auto;
+.play-store-hero strong {
+    font-size: 1.35rem !important;
 }
 
-.play-store-button > span {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 1;
-}
-
-.play-store-button small {
-    margin-bottom: 4px;
-    color: var(--white);
-    font-size: 0.68rem;
-    letter-spacing: 0.05em;
-}
-
-.play-store-button strong {
-    color: var(--white);
-    font-size: 1.25rem;
-    font-weight: 650;
-}
-
-.qr-wrapper {
+.qr-wrapper-hero {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
-.qr-code {
-    width: 68px;
-    height: 68px;
-    padding: 4px;
-    border-radius: 12px;
-    background: var(--white);
-    box-shadow: 0 10px 24px rgba(70, 33, 124, 0.12);
+.qr-code-hero {
+    width: 84px !important;
+    height: 84px !important;
+    padding: 6px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 12px 28px rgba(70, 33, 124, 0.16) !important;
 }
 
-.qr-wrapper p {
-    color: var(--text);
-    font-size: 0.85rem;
-    line-height: 1.3;
+.qr-wrapper-hero p {
+    font-size: 0.9rem;
+    line-height: 1.35;
 }
 
-.qr-wrapper strong {
-    display: block;
+.qr-wrapper-hero strong {
+    font-size: 1.05rem;
     color: var(--purple);
-    font-weight: 800;
 }
 
 .hero-points {
@@ -265,16 +222,15 @@ main {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 8px 16px;
     border-radius: 20px;
     border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(124, 66, 245, 0.05);
 }
 
-.point-icon { line-height: 1; }
-
-/* SCREENSHOWCASE - NO CUTOFFS */
-.screens-showcase {
+/* ISSUE 2 FIX: Showcase showing all 4 phones cleanly */
+.screens-showcase-4 {
     position: relative;
     width: 100%;
     height: 520px;
@@ -285,9 +241,9 @@ main {
 
 .phone {
     position: absolute;
-    padding: 6px;
+    padding: 5px;
     border: 3px solid #211b2c;
-    border-radius: 32px;
+    border-radius: 28px;
     background: #17121e;
     box-shadow: var(--strong-shadow);
     transition: transform 0.3s ease;
@@ -296,84 +252,139 @@ main {
 .phone img {
     width: 100%;
     height: 100%;
-    border-radius: 24px;
+    border-radius: 22px;
     object-fit: cover;
 }
 
-.phone-home {
+/* 4 Phone Layout Stacking */
+.phone-1 {
     z-index: 2;
-    left: 5%;
-    width: 195px;
-    height: 410px;
-    transform: rotate(-6deg);
+    left: 0%;
+    top: 55px;
+    width: 165px;
+    height: 350px;
+    transform: rotate(-10deg);
 }
 
-.phone-discover {
+.phone-2 {
     z-index: 4;
-    width: 220px;
-    height: 460px;
+    left: 22%;
+    top: 15px;
+    width: 195px;
+    height: 420px;
+    transform: rotate(-3deg);
 }
 
-.phone-chat {
-    z-index: 3;
-    right: 5%;
+.phone-3 {
+    z-index: 5;
+    right: 22%;
+    top: 30px;
     width: 190px;
     height: 410px;
-    transform: rotate(6deg);
+    transform: rotate(4deg);
 }
 
-.hero-glow {
+.phone-4 {
+    z-index: 3;
+    right: 0%;
+    top: 70px;
+    width: 160px;
+    height: 340px;
+    transform: rotate(11deg);
+}
+
+/* ISSUE 5 FIX: Building skyline, sky decorations & chatting people */
+.hero-sky-decor {
     position: absolute;
-    border-radius: 50%;
+    inset: 0;
     pointer-events: none;
-    filter: blur(8px);
+    z-index: 1;
 }
 
-.hero-glow-left {
-    top: 90px;
-    left: -190px;
-    width: 410px;
-    height: 410px;
-    background: rgba(255, 75, 158, 0.17);
+.hero-sky-decor span {
+    position: absolute;
+    font-size: 1.4rem;
+    opacity: 0.7;
+    animation: floatSlow 4s ease-in-out infinite alternate;
 }
 
-.hero-glow-right {
-    right: -170px;
-    bottom: -160px;
-    width: 500px;
-    height: 500px;
-    background: rgba(116, 61, 242, 0.25);
+.star-1 { top: 12%; left: 8%; }
+.star-2 { top: 18%; right: 12%; }
+.heart-1 { top: 25%; left: 45%; color: var(--pink); }
+.heart-2 { top: 8%; left: 62%; }
+.pin-1 { top: 38%; left: 3%; }
+.pin-2 { top: 15%; right: 4%; }
+
+@keyframes floatSlow {
+    from { transform: translateY(0); }
+    to { transform: translateY(-8px); }
 }
 
-.city-decoration {
+.city-illustration-wrapper {
     position: absolute;
     z-index: 1;
     right: 0;
     bottom: 0;
     left: 0;
+    pointer-events: none;
+}
+
+.chatting-people-avatars {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-bottom: 2px;
+}
+
+.avatar {
+    position: relative;
+    font-size: 2.2rem;
+    opacity: 0.85;
+}
+
+.chat-bubble {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    color: var(--purple-dark);
+    font-size: 0.68rem;
+    font-style: normal;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    white-space: nowrap;
+    border: 1px solid var(--pink-soft);
+}
+
+.city-decoration {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    gap: 12px;
-    height: 80px;
+    gap: 10px;
+    height: 75px;
     opacity: 0.08;
-    pointer-events: none;
 }
 
 .city-decoration span {
     display: block;
-    width: 68px;
-    border-radius: 7px 7px 0 0;
+    width: 70px;
+    border-radius: 6px 6px 0 0;
     background: var(--purple);
 }
 
-.city-decoration span:nth-child(1) { height: 44px; }
-.city-decoration span:nth-child(2) { height: 78px; }
-.city-decoration span:nth-child(3) { height: 57px; }
-.city-decoration span:nth-child(4) { height: 106px; }
-.city-decoration span:nth-child(5) { height: 64px; }
-.city-decoration span:nth-child(6) { height: 92px; }
-.city-decoration span:nth-child(7) { height: 50px; }
+.city-decoration span:nth-child(1) { height: 40px; }
+.city-decoration span:nth-child(2) { height: 70px; }
+.city-decoration span:nth-child(3) { height: 50px; }
+.city-decoration span:nth-child(4) { height: 95px; }
+.city-decoration span:nth-child(5) { height: 60px; }
+.city-decoration span:nth-child(6) { height: 85px; }
+.city-decoration span:nth-child(7) { height: 45px; }
+.city-decoration span:nth-child(8) { height: 65px; }
 
 
 /* =====================================================
@@ -402,29 +413,13 @@ main {
     align-items: center;
 }
 
-.app-icon-card {
-    position: absolute;
-    z-index: 4;
-    top: 20px;
-    left: 10%;
-    width: 110px;
-    padding: 10px;
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    background: var(--white);
-    box-shadow: var(--shadow);
-    transform: rotate(-8deg);
-}
-
-.app-icon-card img {
-    border-radius: 18px;
-}
+/* ISSUE 3 FIX: Removed .app-icon-card from Section 2 */
 
 .about-phone {
     position: relative;
     z-index: 2;
-    width: 240px;
-    height: 460px;
+    width: 250px;
+    height: 480px;
     padding: 6px;
     border: 3px solid #241d30;
     border-radius: 34px;
@@ -443,7 +438,7 @@ main {
     position: absolute;
     z-index: 6;
     bottom: 20px;
-    left: 12%;
+    left: 8%;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -495,7 +490,6 @@ main {
     border: 1px solid var(--border);
     border-radius: 16px;
     background: linear-gradient(135deg, #ffffff, #fff7fb);
-    box-shadow: var(--shadow-sm);
     transition: transform 0.2s ease;
 }
 
@@ -687,6 +681,17 @@ main {
     font-size: 0.9rem;
 }
 
+.play-store-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #090909;
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 16px;
+}
+
 .play-store-button-large {
     width: 220px;
     min-width: 220px;
@@ -712,7 +717,7 @@ main {
 
 
 /* =====================================================
-   RESPONSIVE LAYOUT (TABLET & MOBILE)
+   RESPONSIVE BREAKPOINTS
 ===================================================== */
 @media (max-width: 1024px) {
     .hero-content, .about-layout {
@@ -725,8 +730,8 @@ main {
     .hero-description { margin: 0 auto; }
     .download-row, .hero-points { justify-content: center; }
 
-    .screens-showcase {
-        max-width: 500px;
+    .screens-showcase-4 {
+        max-width: 550px;
         margin: 20px auto 0;
     }
 
@@ -751,8 +756,11 @@ main {
     .steps-grid { grid-template-columns: 1fr; }
     .hero-title-line { flex-wrap: wrap; }
     
-    .phone-home { left: 0; width: 150px; height: 320px; }
-    .phone-discover { width: 170px; height: 360px; }
-    .phone-chat { right: 0; width: 150px; height: 320px; }
-    .screens-showcase { height: 380px; }
+    .screens-showcase-4 { height: 380px; }
+    .phone-1 { width: 120px; height: 260px; left: 0%; }
+    .phone-2 { width: 140px; height: 300px; left: 18%; }
+    .phone-3 { width: 140px; height: 300px; right: 18%; }
+    .phone-4 { width: 120px; height: 260px; right: 0%; }
+
+    .chatting-people-avatars { display: none; }
 }
