@@ -7,16 +7,8 @@
     <meta name="description" content="NearMate helps you discover nearby people, build your circle, chat privately and connect through real-world plans.">
     <meta name="theme-color" content="#ff3f8f">
 
-    <meta property="og:title" content="NearMate — Discover People Around You">
-    <meta property="og:description" content="Discover nearby people, build your circle, chat privately and connect through real-world plans.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nearmatechat.com/">
-    <meta property="og:image" content="https://nearmatechat.com/assets/nearmate-logo.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-
     <link rel="icon" type="image/png" href="assets/nearmate-app-icon.png">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=3.0">
 </head>
 
 <body>
@@ -27,11 +19,23 @@
          SECTION 1 — HERO
     ================================================== -->
     <section class="page-section hero-section">
+        <!-- Glows & Background Decorations -->
         <div class="hero-glow hero-glow-left"></div>
         <div class="hero-glow hero-glow-right"></div>
 
+        <!-- Decorative Sky: Stars, Floating Hearts & Location Pins -->
+        <div class="hero-sky-decor" aria-hidden="true">
+            <span class="star star-1">✨</span>
+            <span class="star star-2">✨</span>
+            <span class="heart heart-1">💖</span>
+            <span class="heart heart-2">💕</span>
+            <span class="pin pin-1">📍</span>
+            <span class="pin pin-2">📍</span>
+        </div>
+
         <div class="hero-content">
             <div class="hero-copy">
+                <!-- Point 1: Large Banner Logo spanning the width of Discover text -->
                 <img class="brand-logo" src="assets/nearmate-logo.png" alt="NearMate — Discover People Around You">
 
                 <h1 class="hero-title">
@@ -50,8 +54,9 @@
                     and connect through real-world plans with NearMate.
                 </p>
 
+                <!-- Point 4: Enlarged Google Play & QR Code -->
                 <div class="download-row">
-                    <a class="play-store-button" href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" rel="noopener noreferrer" aria-label="Download NearMate on Google Play">
+                    <a class="play-store-button play-store-hero" href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" rel="noopener noreferrer" aria-label="Download NearMate on Google Play">
                         <svg class="play-icon" viewBox="0 0 64 64" aria-hidden="true">
                             <path fill="#00d2ff" d="M8 6l30 26L8 58z"/>
                             <path fill="#00f076" d="M8 6l36 20-6 6z"/>
@@ -64,8 +69,8 @@
                         </span>
                     </a>
 
-                    <div class="qr-wrapper">
-                        <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.nearmatechat.app" alt="Scan to download NearMate from Google Play">
+                    <div class="qr-wrapper qr-wrapper-hero">
+                        <img class="qr-code qr-code-hero" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.nearmatechat.app" alt="Scan to download NearMate from Google Play">
                         <p>
                             Scan to download
                             <strong>NearMate</strong>
@@ -80,21 +85,34 @@
                 </div>
             </div>
 
-            <div class="screens-showcase">
-                <div class="phone phone-home">
+            <!-- Point 2: ALL 4 MOBILE SCREENS SHOWN IN SECTION 1 -->
+            <div class="screens-showcase-4">
+                <div class="phone phone-1">
                     <img src="assets/home-screen.jpg" alt="NearMate home screen">
                 </div>
-                <div class="phone phone-discover">
+                <div class="phone phone-2">
                     <img src="assets/discover-screen.jpg" alt="NearMate Discover screen">
                 </div>
-                <div class="phone phone-chat">
+                <div class="phone phone-3">
                     <img src="assets/chat-screen.png" alt="NearMate private chat screen">
+                </div>
+                <div class="phone phone-4">
+                    <img src="assets/menu-screen.jpg" alt="NearMate menu and settings screen">
                 </div>
             </div>
         </div>
 
-        <div class="city-decoration" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <!-- Point 5: Building Skyline & Chatting People Illustration Background -->
+        <div class="city-illustration-wrapper" aria-hidden="true">
+            <div class="chatting-people-avatars">
+                <span class="avatar avatar-boy">👦🏻 <i class="chat-bubble">Hi!</i></span>
+                <span class="avatar avatar-girl">👧🏽 <i class="chat-bubble">Hey nearby!</i></span>
+                <span class="avatar avatar-boy2">👨🏼 <i class="chat-bubble">Let's meet!</i></span>
+                <span class="avatar avatar-girl2">👩🏻 <i class="chat-bubble">Joined circle!</i></span>
+            </div>
+            <div class="city-decoration">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
         </div>
     </section>
 
@@ -105,10 +123,7 @@
     <section class="page-section about-section">
         <div class="section-container about-layout">
             <div class="about-visual">
-                <div class="app-icon-card">
-                    <img src="assets/nearmate-app-icon.png" alt="NearMate app icon">
-                </div>
-
+                <!-- Point 3: Removed NearMate Logo Image (app-icon-card) from Section 2 -->
                 <div class="about-phone">
                     <img src="assets/menu-screen.jpg" alt="NearMate profile and privacy settings">
                 </div>
@@ -220,7 +235,7 @@
 
 
     <!-- =================================================
-         SECTION 4 — DOWNLOAD
+         SECTION 4 — DOWNLOAD BANNER
     ================================================== -->
     <section class="page-section download-section">
         <div class="download-card">
