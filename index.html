@@ -7,12 +7,11 @@
     <meta name="description" content="NearMate helps you discover nearby people, build your circle, chat privately and connect through real-world plans.">
     <meta name="theme-color" content="#ff3f8f">
 
-    <link rel="icon" type="image/png" href="assets/nearmate-app-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="styles.css?v=4.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css?v=5.0">
 </head>
 
 <body>
@@ -23,17 +22,24 @@
          SECTION 1 — HERO SECTION
     ================================================== -->
     <section class="page-section hero-section">
-        <div class="hero-bg-glow glow-1"></div>
-        <div class="hero-bg-glow glow-2"></div>
-
         <div class="container hero-container">
-            <!-- Navigation Header -->
+
             <header class="hero-header">
-                <img class="brand-logo" src="assets/nearmate-logo.png" alt="NearMate — Discover People Around You">
+                <a href="#" class="brand-logo-mark" aria-label="NearMate home">
+                    <span class="logo-glyph">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M12 21s-7-6.1-7-11.2C5 5.9 8.1 3 12 3s7 2.9 7 6.8C19 14.9 12 21 12 21z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+                            <circle cx="12" cy="9.8" r="2.4" stroke="#fff" stroke-width="1.8"/>
+                        </svg>
+                    </span>
+                    <span class="logo-word">Near<em>Mate</em></span>
+                </a>
+                <a class="header-cta" href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" rel="noopener noreferrer">
+                    Get the app
+                </a>
             </header>
 
             <div class="hero-grid">
-                <!-- Left Column: Copy & Play Store CTA -->
                 <div class="hero-left">
                     <h1 class="hero-main-title">
                         <span class="title-pink">Discover Nearby.</span>
@@ -68,16 +74,43 @@
                     </div>
 
                     <div class="hero-pill-badges">
-                        <span class="pill">📍 Nearby discovery</span>
-                        <span class="pill">💬 Private conversations</span>
-                        <span class="pill">💜 Meaningful circles</span>
+                        <span class="pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.2C5 5.9 8.1 3 12 3s7 2.9 7 6.8C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.2"/></svg>
+                            Nearby discovery
+                        </span>
+                        <span class="pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4A9 9 0 0 1 3 11a8.5 8.5 0 0 1 15.4-4.9A8.4 8.4 0 0 1 21 11.5z"/></svg>
+                            Private conversations
+                        </span>
+                        <span class="pill">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8.5" r="3.2"/><circle cx="15.5" cy="8.5" r="3.2"/><path d="M4 19c.7-2.7 2.6-4.2 4.5-4.2S12 16.3 12 19M12 19c.7-2.7 2.6-4.2 4.5-4.2S20 16.3 20 19"/></svg>
+                            Meaningful circles
+                        </span>
                     </div>
                 </div>
 
-                <!-- Right Column: Recreating the exact Hero Illustration Visual from Mobile App -->
+                <!-- Right Column: mobile screens held like a hand of cards -->
                 <div class="hero-right">
-                    <div class="app-hero-card-visual">
-                        <img class="hero-banner-img" src="assets/home-screen.jpg" alt="NearMate Discover Nearby Chat Freely Banner Illustration">
+                    <div class="phone-fan">
+                        <div class="fan-glow"></div>
+                        <div class="live-chip"><span class="dot"></span> Real screens, in the app right now</div>
+
+                        <div class="phone-card">
+                            <img src="assets/discover-screen.jpg" alt="NearMate discover nearby people screen">
+                            <span class="phone-tag">Discover</span>
+                        </div>
+                        <div class="phone-card">
+                            <img src="assets/home-screen.jpg" alt="NearMate home feed screen">
+                            <span class="phone-tag">Home</span>
+                        </div>
+                        <div class="phone-card">
+                            <img src="assets/chat-screen.png" alt="NearMate private chat screen">
+                            <span class="phone-tag">Chat</span>
+                        </div>
+                        <div class="phone-card">
+                            <img src="assets/menu-screen.jpg" alt="NearMate profile and menu screen">
+                            <span class="phone-tag">Profile</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,37 +119,51 @@
 
 
     <!-- =================================================
-         SECTION 2 — ABOUT NEARMATE (No Mobile Mockup)
+         SECTION 2 — ABOUT NEARMATE
     ================================================== -->
     <section class="page-section about-section">
         <div class="container">
             <div class="section-center-head">
-                <span class="eyebrow-tag">ABOUT NEARMATE</span>
+                <span class="eyebrow-tag">About NearMate</span>
                 <h2 class="section-headline">A simpler way to <span class="gradient-text">connect nearby</span></h2>
                 <p class="section-desc">NearMate is a social discovery app designed to help you discover people around you, grow your trusted circle, chat privately, and connect through real-world plans.</p>
             </div>
 
-            <!-- Modern 3-Column Premium UI Cards matching app layout -->
             <div class="about-cards-grid">
                 <div class="app-style-card">
-                    <div class="card-badge-icon badge-pink">📍</div>
+                    <div class="card-badge-icon badge-pink">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.2C5 5.9 8.1 3 12 3s7 2.9 7 6.8C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></svg>
+                    </div>
                     <h3>Discover Nearby</h3>
                     <p>Find people who match your interests and explore profiles based on your real-time location.</p>
-                    <a href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" class="app-gradient-btn">Discover People</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" class="app-gradient-btn">
+                        Discover People
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
                 </div>
 
                 <div class="app-style-card">
-                    <div class="card-badge-icon badge-purple">💜</div>
+                    <div class="card-badge-icon badge-purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8.5" r="3.2"/><circle cx="15.5" cy="8.5" r="3.2"/><path d="M4 19c.7-2.7 2.6-4.2 4.5-4.2S12 16.3 12 19M12 19c.7-2.7 2.6-4.2 4.5-4.2S20 16.3 20 19"/></svg>
+                    </div>
                     <h3>My Circle</h3>
                     <p>Continue chatting with your friends and trusted connections in a safe, private space.</p>
-                    <a href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" class="app-gradient-btn">Open My Circle</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" class="app-gradient-btn">
+                        Open My Circle
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
                 </div>
 
                 <div class="app-style-card">
-                    <div class="card-badge-icon badge-pink-purple">💬</div>
+                    <div class="card-badge-icon badge-pink-purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4A9 9 0 0 1 3 11a8.5 8.5 0 0 1 15.4-4.9A8.4 8.4 0 0 1 21 11.5z"/></svg>
+                    </div>
                     <h3>Chat Privately</h3>
                     <p>Start 1-on-1 conversations freely with people in your circle and make real-world plans.</p>
-                    <a href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" class="app-gradient-btn">Start Chatting</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.nearmatechat.app" target="_blank" class="app-gradient-btn">
+                        Start Chatting
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -129,7 +176,7 @@
     <section class="page-section how-section">
         <div class="container">
             <div class="section-center-head">
-                <span class="eyebrow-tag">SIMPLE AND SOCIAL</span>
+                <span class="eyebrow-tag">Simple and social</span>
                 <h2 class="section-headline">How <span class="gradient-text">NearMate</span> works</h2>
                 <p class="section-desc">Start discovering and building your circle in four simple steps.</p>
             </div>
@@ -137,28 +184,36 @@
             <div class="steps-4-grid">
                 <article class="step-app-card">
                     <span class="step-num">1</span>
-                    <div class="step-icon-bg">👤</div>
+                    <div class="step-icon-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V21"/><circle cx="9.5" cy="7.5" r="3.5"/><path d="M19 8v6M22 11h-6"/></svg>
+                    </div>
                     <h3>Create Your Profile</h3>
                     <p>Set up your profile and choose how you want to discover people.</p>
                 </article>
 
                 <article class="step-app-card">
                     <span class="step-num">2</span>
-                    <div class="step-icon-bg">📍</div>
+                    <div class="step-icon-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M22 12h-3M5 12H2M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1M18.4 18.4l-2.1-2.1M7.7 7.7 5.6 5.6"/></svg>
+                    </div>
                     <h3>Discover Nearby</h3>
                     <p>Find interesting people around you based on your location and preferences.</p>
                 </article>
 
                 <article class="step-app-card">
                     <span class="step-num">3</span>
-                    <div class="step-icon-bg">👥</div>
+                    <div class="step-icon-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8.5" r="3.2"/><circle cx="15.5" cy="8.5" r="3.2"/><path d="M4 19c.7-2.7 2.6-4.2 4.5-4.2S12 16.3 12 19M12 19c.7-2.7 2.6-4.2 4.5-4.2S20 16.3 20 19"/></svg>
+                    </div>
                     <h3>Build Your Circle</h3>
                     <p>Send connection requests and grow your own trusted social circle.</p>
                 </article>
 
                 <article class="step-app-card">
                     <span class="step-num">4</span>
-                    <div class="step-icon-bg">💬</div>
+                    <div class="step-icon-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4A9 9 0 0 1 3 11a8.5 8.5 0 0 1 15.4-4.9A8.4 8.4 0 0 1 21 11.5z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01" stroke-width="2.2"/></svg>
+                    </div>
                     <h3>Chat and Make Plans</h3>
                     <p>Chat privately and connect through real-world activities and plans.</p>
                 </article>
@@ -174,9 +229,14 @@
         <div class="container">
             <div class="cta-gradient-box">
                 <div class="cta-left">
-                    <img src="assets/nearmate-app-icon.png" alt="NearMate App Icon" class="cta-app-icon">
+                    <div class="cta-app-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M12 21s-7-6.1-7-11.2C5 5.9 8.1 3 12 3s7 2.9 7 6.8C19 14.9 12 21 12 21z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+                            <circle cx="12" cy="9.8" r="2.4" stroke="#fff" stroke-width="1.8"/>
+                        </svg>
+                    </div>
                     <div>
-                        <span class="cta-tag">DOWNLOAD NEARMATE</span>
+                        <span class="cta-tag">Download NearMate</span>
                         <h2>Your next connection <span>may be nearby.</span></h2>
                         <p>Discover people around you and start building your circle today.</p>
                     </div>
@@ -207,6 +267,29 @@
             </div>
         </div>
     </section>
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a href="#" class="brand-logo-mark" aria-label="NearMate home">
+                <span class="logo-glyph">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M12 21s-7-6.1-7-11.2C5 5.9 8.1 3 12 3s7 2.9 7 6.8C19 14.9 12 21 12 21z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+                        <circle cx="12" cy="9.8" r="2.4" stroke="#fff" stroke-width="1.8"/>
+                    </svg>
+                </span>
+                <span class="logo-word">Near<em>Mate</em></span>
+            </a>
+            <ul class="footer-links">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <span class="footer-copy">&copy; 2026 NearMate. All rights reserved.</span>
+        </div>
+    </footer>
 
 </main>
 
