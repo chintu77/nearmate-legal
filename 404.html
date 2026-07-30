@@ -11,7 +11,7 @@
 
   <meta
     name="description"
-    content="Install NearMate to securely view this shared profile and discover people around you.">
+    content="Open this shared profile securely in the NearMate app.">
 
   <meta name="theme-color" content="#ed2f8b">
 
@@ -22,8 +22,8 @@
       --purple: #9a43e6;
       --purple-dark: #762fc0;
 
-      --text: #2b1931;
-      --muted: #746a79;
+      --text: #3d2443;
+      --muted: #766a7a;
       --background: #fff9fc;
       --surface: #ffffff;
       --border: #efdce8;
@@ -31,7 +31,7 @@
       --gradient: linear-gradient(
         135deg,
         var(--pink) 0%,
-        #df287f 46%,
+        #df287f 48%,
         var(--purple) 100%
       );
 
@@ -79,12 +79,12 @@
       background:
         radial-gradient(
           circle at 5% 4%,
-          rgba(237, 47, 139, 0.12),
+          rgba(237, 47, 139, 0.13),
           transparent 34%
         ),
         radial-gradient(
           circle at 96% 8%,
-          rgba(154, 67, 230, 0.12),
+          rgba(154, 67, 230, 0.13),
           transparent 34%
         ),
         var(--background);
@@ -115,18 +115,19 @@
 
     .logo {
       display: block;
-      width: min(100%, 340px);
+      width: min(100%, 330px);
       height: auto;
-      margin: 0 auto 25px;
+      margin: 0 auto 24px;
       object-fit: contain;
     }
 
     .title {
       margin: 0;
+
       font-size: clamp(28px, 6vw, 36px);
       line-height: 1.15;
       font-weight: 900;
-      letter-spacing: -0.9px;
+      letter-spacing: -0.8px;
 
       background: var(--gradient);
       -webkit-background-clip: text;
@@ -137,18 +138,101 @@
     .description {
       max-width: 410px;
       margin: 15px auto 0;
+
       color: var(--muted);
       font-size: 16px;
       line-height: 1.58;
     }
 
+    .actions {
+      width: 100%;
+      max-width: 350px;
+      margin: 28px auto 0;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .view-profile-button {
+      width: 100%;
+      min-height: 56px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+
+      padding: 14px 22px;
+
+      border: 0;
+      border-radius: 17px;
+
+      color: #ffffff;
+      background: var(--gradient);
+
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 800;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 13px 30px rgba(180, 50, 163, 0.28);
+
+      transition:
+        transform 160ms ease,
+        box-shadow 160ms ease,
+        opacity 160ms ease;
+    }
+
+    .view-profile-button:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 17px 36px rgba(180, 50, 163, 0.34);
+    }
+
+    .view-profile-button:active {
+      transform: scale(0.985);
+    }
+
+    .view-profile-button:focus-visible {
+      outline: 3px solid rgba(237, 47, 139, 0.28);
+      outline-offset: 4px;
+    }
+
+    .view-profile-button:disabled {
+      cursor: default;
+      opacity: 0.72;
+    }
+
+    .button-icon {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 auto;
+    }
+
+    .install-label {
+      margin: 1px 0 -5px;
+
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
     .play-store-button {
       display: inline-block;
-      margin: 29px auto 0;
+
+      margin: 0 auto;
       padding: 0;
+
       border: 0;
       background: transparent;
       text-decoration: none;
+
+      line-height: 0;
 
       transition:
         transform 160ms ease,
@@ -164,24 +248,47 @@
     }
 
     .play-store-button:focus-visible {
-      outline: 3px solid rgba(237, 47, 139, 0.30);
+      outline: 3px solid rgba(237, 47, 139, 0.28);
       outline-offset: 6px;
-      border-radius: 10px;
+      border-radius: 8px;
     }
 
     .play-store-badge {
       display: block;
-      width: 230px;
+
+      width: 220px;
       max-width: 100%;
       height: auto;
+
+      margin: 0;
+      padding: 0;
+
       border: 0;
       border-radius: 0;
+
       background: transparent;
       box-shadow: none;
     }
 
+    .status {
+      display: none;
+
+      min-height: 20px;
+      margin: 15px auto 0;
+
+      color: var(--purple-dark);
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .status.visible {
+      display: block;
+    }
+
     .tagline {
-      margin: 26px 0 0;
+      margin: 22px 0 0;
+
       color: var(--purple-dark);
       font-size: 15px;
       line-height: 1.4;
@@ -191,7 +298,8 @@
 
     .privacy-note {
       max-width: 390px;
-      margin: 11px auto 0;
+      margin: 10px auto 0;
+
       color: #968b9a;
       font-size: 12px;
       line-height: 1.45;
@@ -220,8 +328,12 @@
         font-size: 15px;
       }
 
+      .actions {
+        margin-top: 25px;
+      }
+
       .play-store-badge {
-        width: 215px;
+        width: 210px;
       }
     }
 
@@ -233,6 +345,13 @@
 
       .title {
         font-size: 25px;
+      }
+
+      .view-profile-button {
+        min-height: 52px;
+        padding-left: 16px;
+        padding-right: 16px;
+        font-size: 15px;
       }
 
       .play-store-badge {
@@ -256,6 +375,7 @@
       <div class="top-accent"></div>
 
       <div class="content">
+
         <img
           class="logo"
           src="/assets/nearmate-logo.png"
@@ -266,22 +386,62 @@
         </h1>
 
         <p class="description">
-          Install NearMate to securely view this shared profile,
-          discover people around you and start meaningful conversations.
+          Open this shared profile securely in NearMate and discover
+          people around you.
         </p>
 
-        <a
-          class="play-store-button"
-          href="https://play.google.com/store/apps/details?id=com.nearmatechat.app"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Get NearMate on Google Play">
+        <div class="actions">
 
-          <img
-            class="play-store-badge"
-            src="/assets/google-play-badge.svg"
-            alt="Get it on Google Play">
-        </a>
+          <button
+            id="viewProfileButton"
+            class="view-profile-button"
+            type="button">
+
+            <svg
+              class="button-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true">
+
+              <path
+                d="M8 5l7 7-7 7"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+              </path>
+            </svg>
+
+            <span>View Profile</span>
+          </button>
+
+          <p class="install-label">
+            Don’t have NearMate yet?
+          </p>
+
+          <a
+            id="installButton"
+            class="play-store-button"
+            href="https://play.google.com/store/apps/details?id=com.nearmatechat.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Get NearMate on Google Play">
+
+            <img
+              class="play-store-badge"
+              src="/assets/google-play-badge.svg"
+              alt="Get it on Google Play">
+          </a>
+
+        </div>
+
+        <p
+          id="openStatus"
+          class="status"
+          aria-live="polite">
+
+          Opening NearMate…
+        </p>
 
         <p class="tagline">
           Discover People Around You
@@ -290,6 +450,7 @@
         <p class="privacy-note">
           The shared profile can be viewed securely inside the NearMate app.
         </p>
+
       </div>
     </section>
   </main>
@@ -298,23 +459,117 @@
     (() => {
       "use strict";
 
+      const PACKAGE_NAME = "com.nearmatechat.app";
+
+      const PLAY_STORE_URL =
+        "https://play.google.com/store/apps/details?id=" +
+        encodeURIComponent(PACKAGE_NAME);
+
       const pathParts = window.location.pathname
         .split("/")
         .filter(Boolean);
 
-      const validProfilePath =
+      const isValidProfilePath =
         pathParts.length === 2 &&
-        pathParts[0] === "p" &&
+        pathParts[0].toLowerCase() === "p" &&
         pathParts[1].length > 0 &&
         pathParts[1].length <= 150 &&
         !/[\s/\\\u0000-\u001F]/.test(pathParts[1]);
 
-      if (!validProfilePath) {
+      if (!isValidProfilePath) {
         window.location.replace("/");
         return;
       }
 
-      document.title = "View this profile on NearMate";
+      const profileToken = pathParts[1];
+
+      const profileHttpsUrl =
+        "https://nearmatechat.com/p/" +
+        encodeURIComponent(profileToken);
+
+      const androidIntentUrl =
+        "intent://nearmatechat.com/p/" +
+        encodeURIComponent(profileToken) +
+        "#Intent;" +
+        "scheme=https;" +
+        "package=" +
+        PACKAGE_NAME +
+        ";" +
+        "S.browser_fallback_url=" +
+        encodeURIComponent(PLAY_STORE_URL) +
+        ";end";
+
+      const viewProfileButton =
+        document.getElementById("viewProfileButton");
+
+      const installButton =
+        document.getElementById("installButton");
+
+      const openStatus =
+        document.getElementById("openStatus");
+
+      installButton.href = PLAY_STORE_URL;
+
+      function isAndroidDevice() {
+        return /Android/i.test(navigator.userAgent);
+      }
+
+      function showOpeningStatus() {
+        openStatus.textContent = "Opening NearMate…";
+        openStatus.classList.add("visible");
+
+        viewProfileButton.disabled = true;
+      }
+
+      function resetOpeningState() {
+        viewProfileButton.disabled = false;
+        openStatus.classList.remove("visible");
+      }
+
+      function openProfile() {
+        showOpeningStatus();
+
+        if (isAndroidDevice()) {
+          /*
+           * NearMate installed:
+           * Android opens the app and sends the profile URL/token.
+           *
+           * NearMate not installed:
+           * The browser fallback opens Google Play.
+           */
+          window.location.href = androidIntentUrl;
+        } else {
+          /*
+           * NearMate currently supports Android only.
+           */
+          window.location.href = PLAY_STORE_URL;
+        }
+
+        window.setTimeout(resetOpeningState, 3000);
+      }
+
+      viewProfileButton.addEventListener(
+        "click",
+        openProfile
+      );
+
+      document.addEventListener(
+        "visibilitychange",
+        () => {
+          if (document.hidden) {
+            openStatus.textContent =
+              "NearMate opened successfully.";
+          }
+        }
+      );
+
+      document.title =
+        "View this profile on NearMate";
+
+      window.NearMateShare = {
+        token: profileToken,
+        profileUrl: profileHttpsUrl
+      };
     })();
   </script>
 </body>
