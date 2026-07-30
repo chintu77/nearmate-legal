@@ -114,7 +114,7 @@ h1, h2, h3 {
     overflow: hidden;
     background-image:
         linear-gradient(90deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.94) 28%, rgba(255,255,255,.72) 46%, rgba(255,255,255,.18) 66%, rgba(255,255,255,.02) 100%),
-        url("assets/home_discover_chat_hero.png");
+        url("/assets/home_discover_chat_hero.png");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -140,14 +140,34 @@ h1, h2, h3 {
     text-decoration: none;
 }
 
+.hero-header .brand-logo-mark {
+    width: min(52vw, 610px);
+    max-width: calc(100% - 150px);
+}
+
 .brand-logo-img {
     display: block;
-    width: auto;
-    height: 112px;
+    width: 100%;
+    height: auto;
     object-fit: contain;
 }
 
-.footer-logo .brand-logo-img { height: 48px; }
+/* Makes white or pale pixels in the banner visually merge into the artwork. */
+.hero-header .brand-logo-img,
+.footer-logo .brand-logo-img {
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 8px 18px rgba(74, 30, 117, .10));
+}
+
+.footer-logo {
+    width: clamp(330px, 38vw, 500px);
+    max-width: 100%;
+}
+
+.footer-logo .brand-logo-img {
+    width: 100%;
+    height: auto;
+}
 
 .header-cta {
     display: inline-flex;
@@ -515,18 +535,35 @@ h1, h2, h3 {
 }
 
 .site-footer {
-    padding: 34px 0;
-    border-top: 1px solid var(--card-border);
-    background: #fff;
+    position: relative;
+    overflow: hidden;
+    padding: 54px 0;
+    border-top: 1px solid rgba(124, 66, 245, .12);
+    background-image:
+        linear-gradient(90deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.82) 44%, rgba(255,255,255,.46) 72%, rgba(255,255,255,.25) 100%),
+        url("/assets/home_discover_chat_hero.png");
+    background-size: cover;
+    background-position: center 62%;
+    background-repeat: no-repeat;
 }
 
 .footer-inner {
-    display: flex;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(330px, 500px) auto;
+    grid-template-areas:
+        "logo links"
+        "logo copy";
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
+    column-gap: 48px;
+    row-gap: 10px;
 }
+
+.footer-logo { grid-area: logo; }
+.footer-links { grid-area: links; justify-self: end; }
+.footer-copy { grid-area: copy; justify-self: end; }
 
 .footer-links {
     display: flex;
@@ -545,7 +582,7 @@ h1, h2, h3 {
         background-position: 58% center;
         background-image:
             linear-gradient(90deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.94) 38%, rgba(255,255,255,.62) 60%, rgba(255,255,255,.08) 100%),
-            url("assets/home_discover_chat_hero.png");
+            url("/assets/home_discover_chat_hero.png");
     }
 
     .screens-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; margin: 0 auto; }
@@ -567,11 +604,15 @@ h1, h2, h3 {
         background-position: 66% center;
         background-image:
             linear-gradient(180deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.92) 28%, rgba(255,255,255,.68) 58%, rgba(255,255,255,.26) 100%),
-            url("assets/home_discover_chat_hero.png");
+            url("/assets/home_discover_chat_hero.png");
     }
     .hero-container { min-height: calc(100svh - 46px); }
     .hero-header { margin-bottom: 8px; }
-    .brand-logo-img { height: 88px; }
+    .hero-header .brand-logo-mark {
+        width: min(70vw, 360px);
+        max-width: calc(100% - 104px);
+    }
+    .brand-logo-img { width: 100%; height: auto; }
     .header-cta { padding: 10px 16px; font-size: .84rem; }
     .hero-content { align-items: flex-start; padding-top: 8px; }
     .hero-copy { width: 100%; padding: 10px 0 24px; text-align: center; }
@@ -587,7 +628,22 @@ h1, h2, h3 {
 
     .steps-4-grid { grid-template-columns: 1fr; }
     .cta-gradient-box { padding: 32px 20px; }
-    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-inner {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+    }
+    .footer-logo { width: min(92vw, 440px); }
+    .footer-links,
+    .footer-copy { justify-self: auto; }
+    .site-footer {
+        padding: 44px 0;
+        background-position: 65% center;
+        background-image:
+            linear-gradient(180deg, rgba(255,255,255,.94) 0%, rgba(255,255,255,.78) 58%, rgba(255,255,255,.52) 100%),
+            url("/assets/home_discover_chat_hero.png");
+    }
 }
 
 @media (max-width: 420px) {
