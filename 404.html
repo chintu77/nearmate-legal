@@ -1,135 +1,328 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>View this profile on NearMate</title>
-<meta name="theme-color" content="#ed2f8b">
-<style>
-:root{
---pink:#ed2f8b;--purple:#9a43e6;--bg:#fff9fc;--text:#28192e;--muted:#726978;
---grad:linear-gradient(135deg,var(--pink),var(--purple));
-}
-*{box-sizing:border-box}
-body{
-margin:0;
-font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-background:
-radial-gradient(circle at top left,rgba(237,47,139,.12),transparent 35%),
-radial-gradient(circle at top right,rgba(154,67,230,.12),transparent 35%),
-var(--bg);
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-padding:18px;
-color:var(--text);
-}
-.card{
-width:100%;
-max-width:520px;
-background:#fff;
-border-radius:28px;
-overflow:hidden;
-box-shadow:0 20px 55px rgba(88,34,76,.15);
-}
-.top{height:7px;background:var(--grad);}
-.content{padding:34px 26px;text-align:center}
-.logo{width:min(100%,340px);display:block;margin:0 auto 24px}
-h1{
-margin:0;
-font-size:34px;
-font-weight:900;
-line-height:1.15;
-background:var(--grad);
--webkit-background-clip:text;
-color:transparent;
-}
-p{
-margin:16px auto 0;
-max-width:380px;
-font-size:16px;
-line-height:1.6;
-color:var(--muted);
-}
-.play-store-button{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin:30px auto 0;
-    text-decoration:none;
-    transition:transform .2s ease;
-}
+  <meta charset="utf-8">
 
-.play-store-button:hover{
-    transform:translateY(-2px);
-}
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-.play-store-button:active{
-    transform:scale(.98);
-}
+  <title>View this profile on NearMate</title>
 
-.play-store-badge{
-    width:230px;
-    max-width:100%;
-    height:auto;
-    display:block;
-}
+  <meta
+    name="description"
+    content="Install NearMate to securely view this shared profile and discover people around you.">
 
-@media (max-width:520px){
+  <meta name="theme-color" content="#ed2f8b">
 
-    .play-store-badge{
-        width:210px;
+  <style>
+    :root {
+      --pink: #ed2f8b;
+      --pink-dark: #d71e73;
+      --purple: #9a43e6;
+      --purple-dark: #762fc0;
+
+      --text: #2b1931;
+      --muted: #746a79;
+      --background: #fff9fc;
+      --surface: #ffffff;
+      --border: #efdce8;
+
+      --gradient: linear-gradient(
+        135deg,
+        var(--pink) 0%,
+        #df287f 46%,
+        var(--purple) 100%
+      );
+
+      --shadow:
+        0 22px 60px rgba(104, 39, 91, 0.15);
     }
 
-}
-.play:hover{transform:translateY(-2px)}
-.small{display:block;font-size:10px;letter-spacing:.4px;text-transform:uppercase;font-weight:700}
-.tag{
-margin-top:28px;
-font-size:15px;
-font-weight:900;
-color:#7b2ac7;
-}
-@media(max-width:520px){
-h1{font-size:28px}
-.play{width:100%;justify-content:center}
-.logo{width:280px}
-}
-</style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 320px;
+      min-height: 100%;
+      background: var(--background);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+
+      padding:
+        max(18px, env(safe-area-inset-top))
+        max(14px, env(safe-area-inset-right))
+        max(22px, env(safe-area-inset-bottom))
+        max(14px, env(safe-area-inset-left));
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 5% 4%,
+          rgba(237, 47, 139, 0.12),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 96% 8%,
+          rgba(154, 67, 230, 0.12),
+          transparent 34%
+        ),
+        var(--background);
+    }
+
+    .page {
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .card {
+      overflow: hidden;
+
+      border: 1px solid rgba(239, 220, 232, 0.96);
+      border-radius: 28px;
+
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow);
+    }
+
+    .top-accent {
+      height: 7px;
+      background: var(--gradient);
+    }
+
+    .content {
+      padding: 31px 26px 29px;
+      text-align: center;
+    }
+
+    .logo {
+      display: block;
+
+      width: min(100%, 340px);
+      height: auto;
+
+      margin: 0 auto 25px;
+
+      object-fit: contain;
+    }
+
+    .title {
+      margin: 0;
+
+      font-size: clamp(28px, 6vw, 36px);
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: -0.9px;
+
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .description {
+      max-width: 410px;
+      margin: 15px auto 0;
+
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.58;
+    }
+
+    .play-store-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 29px auto 0;
+
+      text-decoration: none;
+
+      transition:
+        transform 160ms ease,
+        opacity 160ms ease;
+    }
+
+    .play-store-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .play-store-button:active {
+      transform: scale(0.98);
+    }
+
+    .play-store-button:focus-visible {
+      outline: 3px solid rgba(237, 47, 139, 0.30);
+      outline-offset: 5px;
+      border-radius: 14px;
+    }
+
+    .play-store-badge {
+      display: block;
+
+      width: 230px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .tagline {
+      margin: 26px 0 0;
+
+      color: var(--purple-dark);
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 900;
+      letter-spacing: 0.15px;
+    }
+
+    .privacy-note {
+      max-width: 390px;
+      margin: 11px auto 0;
+
+      color: #968b9a;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 520px) {
+      body {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .content {
+        padding: 26px 18px 24px;
+      }
+
+      .logo {
+        width: min(100%, 285px);
+        margin-bottom: 21px;
+      }
+
+      .title {
+        font-size: 28px;
+      }
+
+      .description {
+        font-size: 15px;
+      }
+
+      .play-store-badge {
+        width: 215px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .content {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .title {
+        font-size: 25px;
+      }
+
+      .play-store-badge {
+        width: 195px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="card">
-<div class="top"></div>
-<div class="content">
-<img class="logo" src="/assets/nearmate-logo.png" alt="NearMate">
-<h1>View this profile on NearMate</h1>
-<p>Install NearMate to securely view this shared profile, connect with people nearby, and start meaningful conversations.</p>
+  <main class="page">
+    <section class="card">
+      <div class="top-accent"></div>
 
-<a
-    href="https://play.google.com/store/apps/details?id=com.nearmatechat.app"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="play-store-button">
+      <div class="content">
+        <img
+          class="logo"
+          src="/assets/nearmate-logo.png"
+          alt="NearMate">
 
-    <img
-        src="/assets/google-play-badge.png"
-        alt="Get it on Google Play"
-        class="play-store-badge">
-</a>
+        <h1 class="title">
+          View this profile on NearMate
+        </h1>
 
-<div class="tag">Discover People Around You</div>
-</div>
-</div>
+        <p class="description">
+          Install NearMate to securely view this shared profile,
+          discover people around you and start meaningful conversations.
+        </p>
 
-<script>
-(()=>{
-const p=location.pathname.split('/').filter(Boolean);
-const ok=p.length===2&&p[0]==='p'&&p[1].length>0&&p[1].length<=150&&!/[\s/\\\u0000-\u001F]/.test(p[1]);
-if(!ok){
-location.replace('/');
-}
-})();
-</script>
+        <a
+          class="play-store-button"
+          href="https://play.google.com/store/apps/details?id=com.nearmatechat.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Get NearMate on Google Play">
+
+          <img
+            class="play-store-badge"
+            src="/assets/google-play-badge.png"
+            alt="Get it on Google Play">
+        </a>
+
+        <p class="tagline">
+          Discover People Around You
+        </p>
+
+        <p class="privacy-note">
+          The shared profile can be viewed securely inside the NearMate app.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const pathParts = window.location.pathname
+        .split("/")
+        .filter(Boolean);
+
+      const validProfilePath =
+        pathParts.length === 2 &&
+        pathParts[0] === "p" &&
+        pathParts[1].length > 0 &&
+        pathParts[1].length <= 150 &&
+        !/[\s/\\\u0000-\u001F]/.test(pathParts[1]);
+
+      if (!validProfilePath) {
+        window.location.replace("/");
+        return;
+      }
+
+      document.title = "View this profile on NearMate";
+    })();
+  </script>
 </body>
 </html>
