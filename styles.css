@@ -152,21 +152,24 @@ h1, h2, h3 {
     object-fit: contain;
 }
 
-/* Makes white or pale pixels in the banner visually merge into the artwork. */
-.hero-header .brand-logo-img,
-.footer-logo .brand-logo-img {
-    mix-blend-mode: multiply;
-    filter: drop-shadow(0 8px 18px rgba(74, 30, 117, .10));
+/* Transparent logo: no blending tricks, shadows, or separate background. */
+.hero-header .brand-logo-img {
+    mix-blend-mode: normal;
+    filter: none;
+    opacity: 1;
 }
 
 .footer-logo {
-    width: clamp(330px, 38vw, 500px);
+    width: clamp(260px, 27vw, 360px);
     max-width: 100%;
 }
 
 .footer-logo .brand-logo-img {
     width: 100%;
     height: auto;
+    mix-blend-mode: normal;
+    filter: none;
+    opacity: 1;
 }
 
 .header-cta {
@@ -535,39 +538,22 @@ h1, h2, h3 {
 }
 
 .site-footer {
-    position: relative;
-    overflow: hidden;
-    padding: 54px 0;
-    border-top: 1px solid rgba(124, 66, 245, .12);
-    background-image:
-        linear-gradient(90deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.82) 44%, rgba(255,255,255,.46) 72%, rgba(255,255,255,.25) 100%),
-        url("/assets/home_discover_chat_hero.png");
-    background-size: cover;
-    background-position: center 62%;
-    background-repeat: no-repeat;
+    padding: 40px 0;
+    border-top: 1px solid var(--card-border);
+    background: #fff;
 }
 
 .footer-inner {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: minmax(330px, 500px) auto;
-    grid-template-areas:
-        "logo links"
-        "logo copy";
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    column-gap: 48px;
-    row-gap: 10px;
+    flex-wrap: wrap;
+    gap: 18px;
 }
-
-.footer-logo { grid-area: logo; }
-.footer-links { grid-area: links; justify-self: end; }
-.footer-copy { grid-area: copy; justify-self: end; }
 
 .footer-links {
     display: flex;
-    gap: 24px;
+    gap: 26px;
     list-style: none;
     font-size: .9rem;
     font-weight: 700;
@@ -629,21 +615,12 @@ h1, h2, h3 {
     .steps-4-grid { grid-template-columns: 1fr; }
     .cta-gradient-box { padding: 32px 20px; }
     .footer-inner {
-        display: flex;
         flex-direction: column;
         text-align: center;
         gap: 18px;
     }
-    .footer-logo { width: min(92vw, 440px); }
-    .footer-links,
-    .footer-copy { justify-self: auto; }
-    .site-footer {
-        padding: 44px 0;
-        background-position: 65% center;
-        background-image:
-            linear-gradient(180deg, rgba(255,255,255,.94) 0%, rgba(255,255,255,.78) 58%, rgba(255,255,255,.52) 100%),
-            url("/assets/home_discover_chat_hero.png");
-    }
+    .footer-logo { width: min(84vw, 340px); }
+    .site-footer { padding: 36px 0; }
 }
 
 @media (max-width: 420px) {
