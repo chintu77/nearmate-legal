@@ -142,7 +142,8 @@ h1, h2, h3 {
 
 .hero-header .brand-logo-mark {
     width: min(52vw, 610px);
-    max-width: calc(100% - 150px);
+    max-width: 100%;
+    margin-left: -22px;
 }
 
 .brand-logo-img {
@@ -172,21 +173,6 @@ h1, h2, h3 {
     opacity: 1;
 }
 
-.header-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 24px;
-    border-radius: 30px;
-    border: 1.5px solid rgba(124,66,245,.22);
-    background: rgba(255,255,255,.92);
-    backdrop-filter: blur(10px);
-    color: var(--purple-dark);
-    font-weight: 800;
-    font-size: .92rem;
-    text-decoration: none;
-    box-shadow: 0 8px 24px rgba(124,66,245,.10);
-}
 
 .hero-content {
     flex: 1;
@@ -545,23 +531,45 @@ h1, h2, h3 {
 
 .footer-inner {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 18px;
+    gap: 28px;
+}
+
+.footer-brand-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
 }
 
 .footer-links {
     display: flex;
-    gap: 26px;
+    flex-wrap: wrap;
+    gap: 12px 24px;
     list-style: none;
     font-size: .9rem;
     font-weight: 700;
     color: var(--purple-dark);
+    padding-left: 2px;
 }
 
-.footer-links a { text-decoration: none; }
-.footer-copy { font-size: .85rem; color: var(--ink-soft); }
+.footer-links a {
+    text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.footer-copy {
+    flex-shrink: 0;
+    font-size: .85rem;
+    color: var(--ink-soft);
+    padding-bottom: 2px;
+}
 
 @media (max-width: 1080px) {
     .hero-section {
@@ -595,11 +603,11 @@ h1, h2, h3 {
     .hero-container { min-height: calc(100svh - 46px); }
     .hero-header { margin-bottom: 8px; }
     .hero-header .brand-logo-mark {
-        width: min(70vw, 360px);
-        max-width: calc(100% - 104px);
+        width: min(84vw, 390px);
+        max-width: 100%;
+        margin-left: -10px;
     }
     .brand-logo-img { width: 100%; height: auto; }
-    .header-cta { padding: 10px 16px; font-size: .84rem; }
     .hero-content { align-items: flex-start; padding-top: 8px; }
     .hero-copy { width: 100%; padding: 10px 0 24px; text-align: center; }
     .hero-main-title { align-items: center; font-size: clamp(2.45rem, 11vw, 3.35rem); }
@@ -616,10 +624,18 @@ h1, h2, h3 {
     .cta-gradient-box { padding: 32px 20px; }
     .footer-inner {
         flex-direction: column;
+        align-items: center;
         text-align: center;
-        gap: 18px;
+        gap: 20px;
     }
-    .footer-logo { width: min(84vw, 340px); }
+    .footer-brand-group {
+        align-items: center;
+    }
+    .footer-links {
+        justify-content: center;
+        padding-left: 0;
+    }
+    .footer-logo { width: min(88vw, 380px); }
     .site-footer { padding: 36px 0; }
 }
 
